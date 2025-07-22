@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lebenslauf von Ibrahim</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        section {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: #252C64;
+            padding: 10px 0;
+            z-index: 1000;
+        }
+
+        .nav-links a:hover {
+            color: #FFD700; /* Gold color on hover */
+            transition: color 0.3s ease;
+        }
+
+        /* Card Style */
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        /* Footer Style */
+        footer {
+            background-color: #252C64;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .social-icons {
+            margin-top: 15px;
+        }
+
+        .social-icons img {
+            width: 35px;
+            height: 35px;
+            margin: 0 15px;
+            transition: transform 0.3s ease;
+            opacity: 0.9; /* Slightly transparent */
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.2);
+            opacity: 1; /* Fully opaque on hover */
+        }
+
+        /* Scroll to Top Button */
+        #scrollToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #252C64;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            display: none; /* Hidden by default */
+        }
+
+        #scrollToTop:hover {
+            background-color: #FFD700; /* Gold color on hover */
+            transition: background-color 0.3s ease;
+        }
+
+        button {
+            background: linear-gradient(45deg, #252C64, #2E398D);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .profile-photo {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .profile-image {
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            margin-right: 20px;
+            border: 3px solid #FFD700; /* Gold border */
+        }
+
+        .profile-text h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .profile-text h2 {
+            margin: 5px 0 0;
+            font-size: 1.5rem;
+            color: #FFD700; /* Gold color */
+        }
+
+        /* Home Section */
+        .home-section {
+            padding: 100px 20px;
+            background-color: #f4f4f9;
+        }
+
+        .home-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .home-content p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <nav class="nav-bar">
+            <ul class="menu">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#berufserfahrungen">BERUFSERFAHRUNGEN</a></li>
+                <li><a href="#kompetenzen">KOMPETENZEN</a></li>
+                <li><a href="#projekte">PROJEKTE</a></li>
+                <li><a href="#bildungs">BILDUNG</a></li>
+                <li><a href="#kontakt">KONTAKT</a></li>
+                <li>
+                  <a>
+                    <label class="switch">
+                      <input type="checkbox" id="darkModeToggle">
+                      <span class="slider round">
+                        <span class="emoji">
+                          <img alt="☀️" draggable="false" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/2600.png" style="height: 1em; width: 1em; margin: 0px 0.05em 0px 0.1em; vertical-align: -0.1em;">
+                        </span>
+                      </span>
+                    </label>
+                  </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="profile-section">
+            <img src="assets/images/image-ibrahim.jpeg" alt="Ibrahim Kilicaslan" class="profile-image">
+            <div class="profile-text">
+                <h1>IBRAHIM KILICASLAN</h1>
+                <h2>CLOUD & DEVOPS ENGINEER</h2>
+                <p>Als Elektroingenieur mit vielseitiger Berufserfahrung bringe ich eine strukturierte Denkweise und analytische Fähigkeiten mit. In Deutschland habe ich eine praxisorientierte Weiterbildung im Bereich DevOps und Cloud Computing absolviert. Durch reale Projektarbeiten, Trainings und ein anschließendes Praktikum konnte ich fundierte Kenntnisse in Technologien wie AWS, Docker, Kubernetes, Terraform und Jenkins erwerben. Mein technischer Hintergrund kombiniert mit aktueller Cloud-Kompetenz ermöglicht es mir, moderne IT Infrastrukturen effizient mitzugestalten und agile Teams zu unterstützen.</p>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="home-section">
+        <div class="home-content">
+            <h2>Willkommen</h2>
+            <p>
+                Hier finden Sie meinen vollständigen Lebenslauf mit detaillierten Informationen zu meiner beruflichen Laufbahn, Kompetenzen und Projekten.
+            </p>
+        </div>
+    </section>
+
+    <main>
+        <section id="berufserfahrungen">
+            <h2>Berufserfahrungen</h2>
+            <div class="card">
+                <h3>Cloud & DevOps Engineer</h3>
+                <p>NioyaTech LLC - USA (Intern, Remote)</p>
+                <ul>
+                    <li>Planung, Implementierung und Automatisierung von CI/CD-Pipelines.</li>
+                    <li>Bereitstellung und Optimierung der IT-Infrastruktur.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Asset Manager</h3>
+                <p>Huawei – Türkei 07/2016 – 07/2017</p>
+                <ul>
+                    <li>Planen und Koordinieren von Bestellungen und Lieferungen</li>
+                    <li>Verfolgen und Auditieren von unternehmenseigenen Assets</li>
+                    <li>Nachverfolgung der Rücksetzung von IT-Geräten zur Systemsicherheit</li>
+                    <li>Überwachung der Entsorgung und des Verkaufs von Unternehmens-Assets</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Education Consultant & Coordinator</h3>
+                <p>United Towers Educational Consulting – Türkei. 11/2013 – 07/2016</p>
+                <ul>
+                    <li>Vermittlung von Schülerinnen und Studentinnen für Work-and-Travel-Programme, Sprachtrainings-, Sommer- und Auslandspraktikaprogramme.</li>
+                    <li>Koordination von Bildungs-und Kulturaustauschmöglichkeiten in über 20 Ländern</li>
+                </ul>
+            </div>
+
+            <p><strong>Berufliche Weiterbildung & Sprachkurse – Deutschland   01/2019 – 04/2023</strong></p>
+        </section>
+
+        <section id="kompetenzen">
+            <h2>Kompetenzen</h2>
+            <p><strong>Cloud (AWS) Services:</strong></p>
+            <ul>
+                <li>EC2, EBS, EFS, S3, AMI</li>
+                <li>Auto Scaling, Lambda, RDS</li>
+                <li>VPC, Route 53, CloudFront</li>
+                <li>API Gateway, Certificate Manager</li>
+                <li>DynamoDB, CloudFormation</li>
+                <li>EKS, ECS, ECR, SQS, SNS, CloudWatch</li>
+            </ul>
+            <p><strong>DevOps Tools & Technologies:</strong></p>
+            <ul>
+                <li>Docker, Docker Compose</li>
+                <li>Kubernetes, Rancher, Helm Charts</li>
+                <li>Terraform, Ansible</li>
+                <li>Jenkins, GitLab CI/CD</li>
+                <li>Git, GitHub, YAML, JSON</li>
+                <li>Linux (Bash), Powershell</li>
+                <li>Prometheus, Grafana</li>
+                <li>Nginx, Apache, Python, Maven</li>
+                <li>Agile, Scrum, Jira</li>
+            </ul>
+        </section>
+
+        <section id="projekte">
+            <h2>Projekte</h2>
+            <p><strong>CAPSTONE PROJEKT - Microservice Projekt</strong></p>
+            <ul>
+                <li>Entwicklung einer automatisierten Anwendung auf Basis der Microservices-Architektur mit Java, Spring Boot und Spring Cloud, integriert mit MySQL.</li>
+                <li>Containerisierung der Anwendung mit Docker für konsistente und portable Umgebungen.</li>
+                <li>Bereitstellung der Microservices auf einem Kubernetes-Cluster, verwaltet mit Rancher.</li>
+                <li>Implementierung von CI/CD-Pipelines zur Automatisierung der Bereitstellung und Updates mit Jenkins.</li>
+                <li>Infrastrukturautomatisierung mit Terraform zur Skalierung der gesamten Infrastruktur auf AWS EC2-Instanzen.</li>
+                <li>Nutzung von Prometheus und Grafana zur kontinuierlichen Überwachung der Anwendung und Cluster-Performance.</li>
+                <li>Versionskontrolle und Teamzusammenarbeit über GitHub.</li>
+            </ul>
+            <img src="assets/images/pet-clinic-architecture-768x600.png" alt="Microservice Projekt Architektur" class="project-image">
+
+            <p><strong>KUBERNETES PROJEKT - Kubernetes Microservices Phonebook</strong></p>
+            <ul>
+                <li>Projektziel: Entwicklung einer Phonebook-Microservice-Webanwendung mit MySQL-Datenbank, um die Microservice-Architektur praktisch umzusetzen.</li>
+                <li>Architektur: Die Anwendung umfasst einen Front-End-Service und einen Back-End-Service, die mit der MySQL-Datenbank interagieren.</li>
+                <li>Containerisierung: Beide Services wurden dockerisiert und in Containern bereitgestellt.</li>
+                <li>Orchestrierung: Verwaltung und Skalierung der Services durch Kubernetes-Deployments.</li>
+            </ul>
+
+            <p><strong>AWS PROJEKT - Cloud Infrastructure mit AWS Services</strong></p>
+            <ul>
+                <li>Projektziel: Entwicklung und Bereitstellung einer Blog-Webanwendung auf AWS Cloud Infrastructure, basierend auf dem Django Framework.</li>
+                <li>Load Balancing und Skalierung: Einsatz eines Application Load Balancer (ALB) und einer Auto Scaling Group (ASG) für EC2-Instanzen zur Lastverteilung und Skalierbarkeit.</li>
+                <li>Datenbank: Integration einer relationalen Datenbank (RDS) innerhalb einer definierten VPC für stabiles und sicheres Datenmanagement.</li>
+                <li>Ergänzende AWS-Dienste: Verwendung von S3 zur Datenspeicherung, Lambda für serverlose Funktionen und DynamoDB als zusätzliche Datenbanklösung.</li>
+                <li>Verteilung und Routing: Implementierung von CloudFront zur effizienten Content Delivery und Route 53 für DNS-Management und Routing.</li>
+            </ul>
+            <img src="assets/images/aws.png" alt="AWS Projekt Architektur" class="project-image">
+        </section>
+
+        <section id="bildungs">
+            <div class="education-section" id="education">
+                <h2 class="education-heading">Education</h2>
+                <div class="education-card-container">
+                    <div class="education-card-new">
+                        <div class="education-logo-col">
+                            <img class="education-logo-img" src="assets/icons/clarusway.jpeg" alt="Clarusway IT Training School">
+                        </div>
+                        <div class="education-content-col">
+                            <h3 class="education-school">Clarusway IT Training School</h3>
+                            <h4 class="education-degree">AWS SAA & DevOps Engineer Weiterbildung</h4>
+                            <div class="education-date">Oktober 2023 – Oktober 2024</div>
+                            <ul class="education-bullets">
+                                <li>39-wöchige berufliche Weiterbildung (insgesamt 1480 Stunden: IT Fundamentals, AWS SAA, DevOps).</li>
+                                <li>Fundierte Erfahrung mit Shell-Scripting, Git, Linux Environments, Network und AWS EC2, S3, VPC, Route53, IAM…</li>
+                                <li>Einsatz von Ansible, Terraform und AWS CloudFormation für das Anlegen und Verwalten von Cloud-Ressourcen</li>
+                                <li>Containerisierungs- und Virtualisierungsprojekte mit Docker, Docker Compose, Kubernetes, EKS uns ECS</li>
+                                <li>Erfahrung in der Orchestrierung, Skalierung und Vernetzung von Kubernetes mit EKS, ECS, Kubeadm und Rancher</li>
+                                <li>Automatisierte Skalierung und Verwaltung von Kubernetes-Clustern mit Helm, Terraform und Ansible</li>
+                                <li>Implementierung und Automatisierung von CI/CD-Pipelines mit Jenkins, Cloud und GitHub-Integration</li>
+                                <li>Einsatz von Monitoring Tools wie Prometheus, Grafana, AWS CloudWatch</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="education-card-new">
+                        <div class="education-logo-col">
+                            <img class="education-logo-img" src="assets/icons/IAUniversity.png" alt="Istanbul Aydin Universität">
+                        </div>
+                        <div class="education-content-col">
+                            <h3 class="education-school">Istanbul Aydin Universität</h3>
+                            <h4 class="education-degree">Postgraduiertenstudium (PHD), Business Admin.</h4>
+                            <div class="education-date">September 2014 – December 2018</div>
+                            <div class="education-desc">Ohne Abschluss aufgrund Flucht nach Deutschland</div>
+                        </div>
+                    </div>
+                    <div class="education-card-new">
+                        <div class="education-logo-col">
+                            <img class="education-logo-img" src="assets/icons/sanfranciscobayuni.png" alt="San Francisco Bay University">
+                        </div>
+                        <div class="education-content-col">
+                            <h3 class="education-school">San Francisco Bay University</h3>
+                            <h4 class="education-degree">Master Of Business Administration (MBA), Finanzen</h4>
+                            <div class="education-date">March 2008 – March 2009</div>
+                        </div>
+                    </div>
+                    <div class="education-card-new">
+                        <div class="education-logo-col">
+                            <img class="education-logo-img" src="assets/icons/Deanzacollege.png" alt="De Anza College">
+                        </div>
+                        <div class="education-content-col">
+                            <h3 class="education-school">De Anza College</h3>
+                            <h4 class="education-degree">Sprachaufenthalte Englisch</h4>
+                            <div class="education-date">August 2010 – August 2012</div>
+                        </div>
+                    </div>
+                    <div class="education-card-new">
+                        <div class="education-logo-col">
+                            <img class="education-logo-img" src="assets/icons/KaplanLS.jpeg" alt="Kaplan International">
+                        </div>
+                        <div class="education-content-col">
+                            <h3 class="education-school">Kaplan International</h3>
+                            <h4 class="education-degree">Sprachaufenthalte Englisch</h4>
+                            <div class="education-date">April 2009 – July 2010</div>
+                        </div>
+                    </div>
+                    <div class="education-card-new">
+                        <div class="education-logo-col">
+                            <img class="education-logo-img" src="assets/icons/KSU.png" alt="Kahramanmaras Sütcü Imam Universität">
+                        </div>
+                        <div class="education-content-col">
+                            <h3 class="education-school">Kahramanmaras Sütcü Imam Universität</h3>
+                            <h4 class="education-degree">Bachelor-Abschluss, Elektroingenieur</h4>
+                            <div class="education-date">September 2003 – June 2007</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="kontakt">
+            <h2>Kontakt</h2>
+            <div class="contact-list">
+                <div class="contact-row">
+                    <span class="contact-label"><i class="fas fa-phone"></i> Telefonnummer:</span>
+                </div>
+                <div class="contact-value">
+                    <span>+49 176 808 941 84</span>
+                </div>
+                <div class="contact-row">
+                    <span class="contact-label"><i class="far fa-envelope"></i> E-Mail:</span>
+                </div>
+                <div class="contact-value">
+                    <span><a href="mailto:aikilicaslan@gmail.com">aikilicaslan@gmail.com</a></span>
+                </div>
+                <div class="contact-row">
+                    <span class="contact-label"><i class="fab fa-linkedin"></i> LinkedIn:</span>
+                </div>
+                <div class="contact-value">
+                    <span><a href="https://linkedin.com/in/ibrahim-kilicaslan" target="_blank">linkedin.com/in/ibrahim-kilicaslan</a></span>
+                </div>
+                <div class="contact-row">
+                    <span class="contact-label"><i class="fab fa-github"></i> GitHub:</span>
+                </div>
+                <div class="contact-value">
+                    <span><a href="https://github.com/ibrahim-kilicaslan" target="_blank">github.com/ibrahim-kilicaslan</a></span>
+                </div>
+                <div class="contact-row">
+                    <span class="contact-label"><i class="fas fa-map-marker-alt"></i> Adresse:</span>
+                </div>
+                <div class="contact-value">
+                    <span>Berlin, Deutschland</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ibrahimkilicaslan.click Alle Rechte vorbehalten.</p>
+        <div class="social-icons">
+            <a href="https://linkedin.com/in/ibrahim-kilicaslan" target="_blank"><img src="assets/icons/linkedin.png" alt="LinkedIn"></a>
+            <a href="https://github.com/Ibrahim-Kilicaslan" target="_blank"><img src="assets/icons/github.png" alt="GitHub"></a>
+            <a href="https://www.xing.com/profile/Ibrahim_Kilicaslan057417/web_profiles" target="_blank"><img src="assets/icons/Xing.png" alt="Xing"></a>
+
+        </div>
+    </footer>
+
+    <button id="scrollToTop" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Show button on scroll
+        window.onscroll = function () {
+            const button = document.getElementById('scrollToTop');
+            if (document.documentElement.scrollTop > 100) {
+                button.style.display = 'block';
+            } else {
+                button.style.display = 'none';
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfstate.*
+.terraform.lock.hcl
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Deployment directories
+deploy-dist/
+
+# Terraform state files (specific to terraform-static-website)
+terraform-static-website/terraform.tfstate
+terraform-static-website/terraform.tfstate.backup
+terraform-static-website/terraform.tfstate.*.backup
+
+# Terraform cache and lock files
+terraform-static-website/.terraform/
+terraform-static-website/.terraform.lock.hcl
+
+# Temporary JSON files
+delete-cname.json
+
+# Empty or corrupted files
+[

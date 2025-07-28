@@ -1,138 +1,130 @@
-# 🟦 Terraform Static Website on AWS
+# 🟦 Terraform Static Website on AWS - ismailkilicaslan.de
 
-This module provides a complete, modular, and production-ready Infrastructure as Code (IaC) solution for hosting a static website on AWS using S3, CloudFront, Route53, and ACM, all managed with Terraform. It is designed to be clear, reusable, and easy for anyone to adapt for their own projects.
+Bu modül, `ismailkilicaslan.de` domain'i için tamamen otomatikleştirilmiş, modüler ve production-ready Infrastructure as Code (IaC) çözümü sağlar. S3, CloudFront, Route53 ve ACM kullanarak statik web sitesi hosting'i yapar ve Terraform ile yönetilir.
+
+**🌐 Domain:** ismailkilicaslan.de  
+**📦 Repository:** https://github.com/iskilicaslan61/resume-website
 
 ---
 
-## 🚀 Step-by-Step: Deploy Your Static Website on AWS
+## 🚀 Adım Adım: AWS'de Statik Web Sitenizi Dağıtın
 
-### **Step 1: Clone the Repository**
-```sh
-git clone <your-repo-url>
-cd terraform-static-website
+### **Adım 1: Repository'yi Klonlayın**
+```bash
+git clone https://github.com/iskilicaslan61/resume-website.git
+cd resume-website/terraform-static-website
 ```
 
-### **Step 2: Configure Your Variables**
-- Open `variables.tf` in your editor.
-- Set your AWS region, main domain, and all subdomains (aliases):
-  - `aws_region`: AWS region (default: `us-east-1`)
-  - `domain_name`: Your main domain (e.g. `example.com`)
-  - `aliases`: List of all domains/subdomains (e.g. `www.example.com`, `info.example.com`)
-- **Tip:** To add a new subdomain, just add it to the `aliases` list. All DNS and CloudFront settings will update automatically!
+### **Adım 2: Değişkenlerinizi Yapılandırın**
+- `variables.tf` dosyasını düzenleyin:
+  - `aws_region`: AWS bölgesi (varsayılan: `us-east-1`)
+  - `domain_name`: Ana domain'iniz (`ismailkilicaslan.de`)
+  - `aliases`: Tüm domain/subdomain'lerin listesi
 
-### **Step 3: Initialize Terraform**
-```sh
+### **Adım 3: Terraform'u Başlatın**
+```bash
 terraform init
 ```
 
-### **Step 4: Review the Plan**
-```sh
+### **Adım 4: Planı Gözden Geçirin**
+```bash
 terraform plan
 ```
-- This shows what resources will be created or changed.
+- Hangi kaynakların oluşturulacağını veya değiştirileceğini gösterir.
 
-### **Step 5: Two-Stage Apply for ACM/Route53 Validation**
-If you see errors about ACM DNS validation or for_each arguments, use this two-step process:
-
-**A. First, create only the ACM certificate and Route53 hosted zone:**
-```sh
-terraform apply -target=aws_acm_certificate.cert -target=aws_route53_zone.main
+### **Adım 5: Infrastructure'ı Uygulayın**
+```bash
+terraform apply --auto-approve
 ```
-- This creates the certificate and hosted zone, and outputs the DNS validation records.
 
-**B. Then, apply the rest of the infrastructure:**
-```sh
-terraform apply
-```
-- This creates the DNS validation records, CloudFront, S3, and all other resources.
+### **Adım 6: Domain Registrar'ınızı Güncelleyin**
+- Domain registrar'ınızın paneline gidin
+- Mevcut NS (Name Server) kayıtlarını Route53 hosted zone'dan aldığınız dört NS kaydıyla değiştirin
+- **Önemli:** DNS yayılması 5-30 dakika sürebilir
 
-### **Step 6: Update Your Domain's NS Records**
-- Go to your domain registrar's panel.
-- Replace all existing NS (Name Server) records with the four NS records from your Route53 hosted zone (see AWS Console → Route53 → Hosted zones).
-- **Important:** DNS propagation can take 5–30 minutes (sometimes longer). ACM validation and HTTPS will not work until this is complete.
-
-### **Step 7: Check the Outputs**
-- After apply, Terraform will output:
+### **Adım 7: Çıktıları Kontrol Edin**
+- Apply sonrası Terraform şunları çıktı olarak verir:
   - S3 website endpoint
   - CloudFront distribution domain
   - Route53 hosted zone name
+  - **Route53 nameservers** (domain registrar için)
+  - **CloudFront distribution ID** (GitHub Actions için)
 
-### **Step 8: Upload Your Website Files**
-- Use the AWS Console or CLI to upload your static website files (index.html, images, etc.) to the S3 bucket.
-- Example:
-  ```sh
-  aws s3 sync ../deploy-dist/ s3://<your-bucket-name> --delete
+### **Adım 8: Web Sitenizi Yükleyin**
+- AWS Console veya CLI kullanarak statik web sitesi dosyalarınızı S3 bucket'a yükleyin
+- Örnek:
+  ```bash
+  aws s3 sync ../ s3://ismailkilicaslan.de --delete
   ```
 
-### **Step 9: Test Your Website**
-- Open your domain in a browser (e.g. `https://yourdomain.com`).
-- Check that HTTPS works and your site loads correctly.
+### **Adım 9: Web Sitenizi Test Edin**
+- Tarayıcınızda domain'inizi açın (`https://ismailkilicaslan.de`)
+- HTTPS'in çalıştığını ve sitenizin doğru yüklendiğini kontrol edin
 
 ---
 
-## 🚀 What Does This Module Do?
-- **Creates an S3 bucket** for static website hosting
-- **Sets up CloudFront** for global CDN, HTTPS, and custom domains
-- **Manages Route53 DNS** (hosted zone, A records, validation records)
-- **Requests and validates ACM SSL certificates** (wildcard, auto-DNS validation)
-- **Outputs all important endpoints** for easy integration
-- **Supports full automation and CI/CD** (see main project README)
+## 🚀 Bu Modül Ne Yapar?
+- **S3 bucket oluşturur** statik web sitesi hosting için
+- **CloudFront kurar** global CDN, HTTPS ve özel domain'ler için
+- **Route53 DNS'i yönetir** (hosted zone, A kayıtları, validation kayıtları)
+- **Mevcut ACM SSL sertifikasını kullanır** (wildcard, otomatik DNS validation)
+- **Tüm önemli endpoint'leri çıktı olarak verir** kolay entegrasyon için
+- **Tam otomasyon ve CI/CD desteği** sağlar (ana proje README'ye bakın)
 
 ---
 
-## 🗂️ File & Module Structure
+## 🗂️ Dosya ve Modül Yapısı
 
-- `main.tf` – Providers (AWS, regions) and entry point
-- `variables.tf` – All variables (region, domain, aliases)
-- `s3.tf` – S3 bucket, public access, and policy
-- `cert.tf` – ACM wildcard certificate and DNS validation
-- `route53.tf` – Hosted zone, DNS records, validation records
-- `cloudfront.tf` – CloudFront distribution (CDN, HTTPS, aliases)
-- `outputs.tf` – Outputs for endpoints and zone names
+- `main.tf` – Provider'lar (AWS, bölgeler) ve giriş noktası
+- `variables.tf` – Tüm değişkenler (bölge, domain, alias'lar)
+- `s3.tf` – S3 bucket, public access ve policy
+- `cert.tf` – Mevcut ACM wildcard sertifikası kullanımı
+- `route53.tf` – Hosted zone, DNS kayıtları
+- `cloudfront.tf` – CloudFront distribution (CDN, HTTPS, alias'lar)
+- `outputs.tf` – Endpoint'ler ve zone isimleri için çıktılar
 
 ---
 
-## 🧩 How to Add a New Subdomain
-1. Edit `variables.tf` and add your new subdomain to the `aliases` list:
+## 🧩 Yeni Subdomain Ekleme
+1. `variables.tf` dosyasını düzenleyin ve yeni subdomain'inizi `aliases` listesine ekleyin:
    ```hcl
    variable "aliases" {
      default = [
-       "ibrahimkilicaslan.click",
-       "info.ibrahimkilicaslan.click",
-       "www.ibrahimkilicaslan.click",
-       "newsubdomain.ibrahimkilicaslan.click" # <--- Add here
+       "ismailkilicaslan.de",
+       "www.ismailkilicaslan.de",
+       "blog.ismailkilicaslan.de" # <--- Buraya ekleyin
      ]
    }
    ```
-2. Run:
-   ```sh
+2. Çalıştırın:
+   ```bash
    terraform apply
    ```
-3. That's it! All DNS and CloudFront settings update automatically.
+3. Bu kadar! Tüm DNS ve CloudFront ayarları otomatik olarak güncellenir.
 
 ---
 
-## 🛡️ Best Practices & Notes
-- **Never manually edit AWS Console resources** managed by Terraform.
-- **All DNS records** (A, CNAME, etc.) should be managed by this module.
-- **ACM certificates for CloudFront** must be created in `us-east-1` (even if your site is in another region).
-- **S3 bucket names** must be globally unique.
-- **Use version control** for your `.tf` files and keep your state files secure.
-- **Delete any manual Route53 records** before applying to avoid conflicts.
-- **Force destroy** is enabled for the S3 bucket (for easy cleanup in dev/test). Remove for production if you want to protect data.
+## 🛡️ En İyi Uygulamalar ve Notlar
+- **Terraform tarafından yönetilen AWS Console kaynaklarını asla manuel olarak düzenlemeyin**
+- **Tüm DNS kayıtları** (A, CNAME, vb.) bu modül tarafından yönetilmelidir
+- **CloudFront için ACM sertifikaları** `us-east-1`'de oluşturulmalıdır
+- **S3 bucket isimleri** global olarak benzersiz olmalıdır
+- **Version control kullanın** `.tf` dosyalarınız için ve state dosyalarınızı güvende tutun
+- **Uygulamadan önce manuel Route53 kayıtlarını silin** çakışmaları önlemek için
+- **Force destroy** S3 bucket için etkinleştirilmiştir (dev/test için kolay temizlik)
 
 ---
 
-## 🆘 Troubleshooting & FAQ
-- **Terraform apply fails with "already exists"**: There may be a manual record or resource in AWS. Delete it or import it into Terraform.
-- **ACM validation stuck**: Check that Route53 CNAME validation records exist and are correct. Make sure your domain's NS records match the Route53 hosted zone.
-- **CloudFront not serving HTTPS**: Certificate must be in `us-east-1` and fully validated.
-- **S3 access denied**: Check bucket policy and public access block settings.
-- **DNS not resolving**: Make sure your domain's NS records at your registrar match the Route53 hosted zone.
+## 🆘 Sorun Giderme ve SSS
+- **Terraform apply "already exists" hatası veriyor**: AWS'de manuel kayıt veya kaynak olabilir. Silin veya Terraform'a import edin
+- **ACM validation takıldı**: Route53 CNAME validation kayıtlarının var olduğunu ve doğru olduğunu kontrol edin
+- **CloudFront HTTPS sunmuyor**: Sertifika `us-east-1`'de olmalı ve tamamen doğrulanmış olmalı
+- **S3 erişim reddedildi**: Bucket policy ve public access block ayarlarını kontrol edin
+- **DNS çözümlenmiyor**: Domain'inizin registrar'daki NS kayıtlarının Route53 hosted zone ile eşleştiğinden emin olun
 
 ---
 
-## 📚 Resources
+## 📚 Kaynaklar
 - [Terraform Documentation](https://www.terraform.io/docs/)
 - [AWS S3 Static Website Hosting](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html)
 - [AWS CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html)
@@ -140,68 +132,84 @@ terraform apply
 
 ---
 
-## 💡 Extra Tips
-- This module is designed for learning, prototyping, and production use.
-- You can easily extend it for multi-environment (dev/stage/prod) setups by using workspaces or variable overrides.
-- For private/static sites, consider using CloudFront Origin Access Control (OAC) or OAI for S3.
-- Always review AWS costs before deploying in production.
-- Pull requests and suggestions are welcome!
-
-## 📄 Explanation of Each File
+## 💡 Ek İpuçları
+- Bu modül öğrenme, prototipleme ve production kullanımı için tasarlanmıştır
+- Workspace'ler veya değişken override'ları kullanarak multi-environment (dev/stage/prod) kurulumları için kolayca genişletilebilir
+- Özel/statik siteler için CloudFront Origin Access Control (OAC) veya OAI kullanmayı düşünün
+- Production'da dağıtmadan önce AWS maliyetlerini her zaman gözden geçirin
+- Pull request'ler ve öneriler hoş karşılanır!
 
 ---
 
-## 🗑️ How to Remove a Resource from Terraform State (State Management)
+## 🗑️ Terraform State'den Kaynak Kaldırma (State Yönetimi)
 
-If you need to remove a resource from Terraform state (for example, after deleting it manually in AWS), follow these steps:
+Eğer bir kaynağı Terraform state'den kaldırmanız gerekiyorsa (örneğin, AWS'de manuel olarak sildikten sonra), şu adımları izleyin:
 
-### 1. List All Resources in State
-Run:
-```sh
+### 1. State'deki Tüm Kaynakları Listele
+Çalıştırın:
+```bash
 terraform state list
 ```
-This command shows all resources currently tracked in your state file.
+Bu komut state dosyanızda takip edilen tüm kaynakları gösterir.
 
-### 2. Find the Correct Resource Address
-Look for a line similar to:
+### 2. Doğru Kaynak Adresini Bulun
+Şuna benzer bir satır arayın:
 ```
 aws_route53_record.cert_validation["your-key"]
 ```
-or
+veya
 ```
 aws_route53_record.cert_validation
 ```
-or another resource name.
 
-### 3. Copy the Exact Address
-Copy the full line exactly as shown in the output.
+### 3. Tam Adresi Kopyalayın
+Çıktıda gösterildiği gibi tam satırı kopyalayın.
 
-### 4. Remove the Resource from State
-Run:
-```sh
-terraform state rm 'paste-the-exact-address-here'
+### 4. Kaynağı State'den Kaldırın
+Çalıştırın:
+```bash
+terraform state rm 'tam-adresi-buraya-yapıştırın'
 ```
-**Example:**
-```sh
+**Örnek:**
+```bash
 terraform state rm 'aws_route53_record.cert_validation["your-key"]'
 ```
-or
-```sh
-terraform state rm aws_route53_record.cert_validation
-```
-(Use quotes if the address contains special characters or brackets)
 
-### 5. If You Can't Find the Resource
-If the resource is not listed in the state, you do not need to remove it.
-You can safely continue with:
-```sh
+### 5. Kaynağı Bulamıyorsanız
+Eğer kaynak state'de listelenmemişse, kaldırmanıza gerek yoktur.
+Güvenle devam edebilirsiniz:
+```bash
 terraform apply
 ```
 
-## 📝 License
+---
+
+## 📝 Lisans
 MIT
 
 ---
 
-## 👤 Author
-Ibrahim Kilicaslan
+## 👤 Yazar
+İsmail Kılıçaslan
+
+---
+
+## 🎯 Mevcut Konfigürasyon
+
+### **Domain:** ismailkilicaslan.de
+### **S3 Bucket:** ismailkilicaslan.de
+### **CloudFront Distribution ID:** E1AU95JGWIP80S
+### **Route53 Zone ID:** Z099757327K2VT312NQLU
+
+### **Route53 Nameservers:**
+```
+ns-1155.awsdns-16.org
+ns-1741.awsdns-25.co.uk
+ns-356.awsdns-44.com
+ns-785.awsdns-34.net
+```
+
+### **GitHub Actions için Gerekli Secrets:**
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
+- `CLOUDFRONT_DISTRIBUTION_ID` = `E1AU95JGWIP80S`

@@ -16,4 +16,16 @@ output "cloudfront_domain_name" {
 output "route53_zone_name" {
   description = "Route53 hosted zone name"
   value       = aws_route53_zone.main.name
+}
+
+# The nameservers for the Route53 hosted zone (needed for domain registrar configuration)
+output "route53_nameservers" {
+  description = "Route53 nameservers for domain configuration"
+  value       = aws_route53_zone.main.name_servers
+}
+
+# The CloudFront distribution ID (needed for GitHub Actions)
+output "cloudfront_distribution_id" {
+  description = "CloudFront distribution ID"
+  value       = aws_cloudfront_distribution.cdn.id
 } 

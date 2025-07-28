@@ -36,7 +36,7 @@ jobs:
 
       - name: Sync website files to S3
         run: |
-          aws s3 sync deploy-temp/ s3://ibrahimkilicaslan.click \
+          aws s3 sync deploy-temp/ s3://ismailkilicaslan.de \
             --delete \
             --exclude '*.tf' \
             --exclude '.terraform/*' \
@@ -58,6 +58,5 @@ jobs:
       - name: Deployment status
         run: |
           echo "✅ Website deployed successfully!"
-          echo "🌐 Main site: https://ibrahimkilicaslan.click"
-          echo "🌐 WWW site: https://www.ibrahimkilicaslan.click"
-          echo "🌐 Info site: https://info.ibrahimkilicaslan.click" 
+          echo "🌐 Main site: https://ismailkilicaslan.de"
+          echo "📦 S3 bucket: s3://ismailkilicaslan.de"

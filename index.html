@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lebenslauf von Ismail</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -102,408 +102,237 @@
                 flex-direction: column;
                 gap: 20px;
             }
-
-            .profile-photo {
-                width: 150px;
-                height: 150px;
-            }
-        }
-
-        /* Hero Section */
-        .hero {
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            color: white;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: 100%;
-        }
-
-        .background-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-            animation: fadeIn 2s ease-in-out;
-        }
-
-        .profile-section {
-            display: flex;
-            align-items: center;
-            animation: fadeIn 1.5s ease-in-out;
-        }
-
-        .profile-image {
-            width: 450px;
-            height: 450px;
-            border-radius: 50%;
-            margin-right: 20px;
-            border: 3px solid #FFD700; /* Gold border */
-        }
-
-        .profile-text h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-
-        .profile-text h2 {
-            margin: 5px 0 0;
-            font-size: 1.5rem;
-            color: #FFD700; /* Gold color */
-        }
-
-        /* Home Section */
-        .home-section {
-            padding: 100px 20px;
-            background-color: #f4f4f9;
-        }
-
-        .home-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .home-content p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin: 20px 0;
         }
     </style>
 </head>
 <body>
-    <header class="hero">
-        <nav class="nav-bar">
-            <ul class="menu">
-                <li><a href="#home">HOME</a></li>
-                <li><a href="#berufserfahrungen">BERUFSERFAHRUNGEN</a></li>
-                <li><a href="#kompetenzen">KOMPETENZEN</a></li>
-                <li><a href="#projekte">PROJEKTE</a></li>
-                <li><a href="#bildungs">BILDUNG</a></li>
-                <li><a href="#kontakt">KONTAKT</a></li>
-                <li>
-                  <a>
-                    <label class="switch">
-                      <input type="checkbox" id="darkModeToggle">
-                      <span class="slider round">
-                        <span class="emoji">
-                          <img alt="☀️" draggable="false" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/2600.png" style="height: 1em; width: 1em; margin: 0px 0.05em 0px 0.1em; vertical-align: -0.1em;">
-                        </span>
-                      </span>
-                    </label>
-                  </a>
-                </li>
-            </ul>
-        </nav>
-        <div class="profile-section">
-                            <img src="assets/images/devops-profile.svg" alt="Ismail Kilicaslan - DevOps & Cloud Engineer" class="profile-image">
-            <div class="profile-text">
-                <h1>ISMAIL KILICASLAN</h1>
-                <h2>DEVOPS & CLOUD ENGINEER</h2>
-                <p>Erfahrener DevOps & Cloud Engineer mit fundierten Kenntnissen in AWS, Kubernetes, Docker, Terraform und CI/CD-Pipelines. Durch intensive Weiterbildung und praktische Projekte habe ich umfassende Erfahrung in der Automatisierung von Infrastrukturen, Container-Orchestrierung und Cloud-native Anwendungsentwicklung erworben. Mein Fokus liegt auf der Implementierung von skalierbaren, sicheren und wartbaren Cloud-Infrastrukturen mit modernen DevOps-Praktiken.</p>
-            </div>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#berufserfahrungen">Berufserfahrungen</a>
+            <a href="#kompetenzen">Kompetenzen</a>
+            <a href="#projekte">Projekte</a>
+            <a href="#bildungs">Bildung</a>
+            <a href="#kontakt">Kontakt</a>
         </div>
-    </header>
+    </nav>
 
-    <section id="home" class="home-section">
-
+    <!-- Home Section -->
     <section id="home">
-        <div class="container">
-            <h1>Willkommen auf meinem Lebenslauf</h1>
-            <h2>Mein Name ist Ismail</h2>
-            <p>Ich bin ein erfahrener DevOps & Cloud Engineer mit fundierten Kenntnissen in AWS, Kubernetes, Docker, Terraform und CI/CD-Pipelines. Ich spezialisiere mich auf die Implementierung von skalierbaren, sicheren und wartbaren Cloud-Infrastrukturen.</p>
-            <p>Hier finden Sie Informationen über meine DevOps-Erfahrungen, Cloud Computing-Kompetenzen, praktische Projekte, Weiterbildung und wie Sie mich kontaktieren können.</p>
+        <header>
+            <div class="hero">
+                <div class="profile-section">
+                    <img src="/images/ismail-profile.jpg" alt="Ismail Kilicaslan" class="profile-image">
+                    <div class="profile-text">
+                        <h1>Ismail Kilicaslan</h1>
+                        <h2>DevOps & Cloud Engineer</h2>
+                    </div>
+                </div>
+                <div class="hero-content">
+                    <p>Erfahrener DevOps Engineer mit Expertise in AWS, Kubernetes, Docker und CI/CD-Pipelines. 
+                    Leidenschaft für Automatisierung und Cloud-native Lösungen.</p>
+                </div>
+            </div>
+        </header>
+    </section>
+
+    <!-- Berufserfahrungen Section -->
+    <section id="berufserfahrungen">
+        <h2>Berufserfahrungen</h2>
+        <div class="card">
+            <h3>DevOps Engineer - Freelancer</h3>
+            <p><strong>2023 - Gegenwart</strong></p>
+            <ul>
+                <li>Entwicklung und Wartung von CI/CD-Pipelines mit Jenkins, GitLab CI und GitHub Actions</li>
+                <li>Containerisierung von Anwendungen mit Docker und Kubernetes</li>
+                <li>AWS Cloud-Infrastruktur-Management (EC2, S3, RDS, Lambda)</li>
+                <li>Infrastructure as Code mit Terraform und CloudFormation</li>
+                <li>Monitoring und Logging mit ELK Stack und Prometheus/Grafana</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>System Administrator - IT Solutions GmbH</h3>
+            <p><strong>2021 - 2023</strong></p>
+            <ul>
+                <li>Verwaltung von Linux-Servern (Ubuntu, CentOS)</li>
+                <li>Konfiguration und Wartung von Netzwerk-Infrastruktur</li>
+                <li>Backup-Strategien und Disaster Recovery</li>
+                <li>Virtualisierung mit VMware und VirtualBox</li>
+            </ul>
         </div>
     </section>
 
-</section>
+    <!-- Kompetenzen Section -->
+    <section id="kompetenzen">
+        <h2>Technische Kompetenzen</h2>
+        <div class="kompetenzen-section">
+            <div class="card">
+                <h3>Cloud & DevOps</h3>
+                <ul>
+                    <li><strong>AWS:</strong> EC2, S3, RDS, Lambda, CloudFormation, IAM</li>
+                    <li><strong>Kubernetes:</strong> Cluster-Management, Helm Charts, Ingress</li>
+                    <li><strong>Docker:</strong> Containerisierung, Docker Compose, Registry</li>
+                    <li><strong>CI/CD:</strong> Jenkins, GitLab CI, GitHub Actions</li>
+                    <li><strong>IaC:</strong> Terraform, Ansible, CloudFormation</li>
+                </ul>
+            </div>
 
-</section>
+            <div class="card">
+                <h3>Programmierung & Scripting</h3>
+                <ul>
+                    <li><strong>Sprachen:</strong> Python, Bash, JavaScript</li>
+                    <li><strong>Web:</strong> HTML, CSS, React (Grundlagen)</li>
+                    <li><strong>Datenbanken:</strong> MySQL, PostgreSQL, MongoDB</li>
+                    <li><strong>Monitoring:</strong> Prometheus, Grafana, ELK Stack</li>
+                </ul>
+            </div>
 
-    <main>
-        <section id="berufserfahrungen">
+            <div class="card">
+                <h3>Tools & Technologien</h3>
+                <ul>
+                    <li><strong>Version Control:</strong> Git, GitHub, GitLab</li>
+                    <li><strong>Web Server:</strong> Nginx, Apache</li>
+                    <li><strong>OS:</strong> Linux (Ubuntu, CentOS), Windows Server</li>
+                    <li><strong>Virtualisierung:</strong> VMware, VirtualBox</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-    <h2>Berufserfahrungen</h2>
-    <div class="experience">
-        <h3>DevOps & Cloud Engineer (Updated)</h3>
-        <p><strong>Duration:</strong> NioyaTech LLC - USA (Intern, Remote) | 2024</p>
-        <ul>
-            <li>Entwicklung und Automatisierung von CI/CD-Pipelines mit Jenkins und GitLab CI/CD</li>
-            <li>Infrastructure as Code (IaC) Implementierung mit Terraform für AWS-Ressourcen</li>
-            <li>Containerisierung von Anwendungen mit Docker und Kubernetes-Deployments</li>
-            <li>Monitoring und Logging-Setup mit Prometheus, Grafana und CloudWatch</li>
-            <li>Implementierung von Microservices-Architekturen und API-Management</li>
-        </ul>
-    
-</section>
-
-        <section id="kompetenzen">
-
-    <h2>Kompetenzen</h2>
-    <p>Hier sind meine wichtigsten DevOps & Cloud Computing Fähigkeiten:</p>
-    <ul>
-        <li><strong>Cloud Services (AWS):</strong>
-            <ul>
-                <li><strong>Compute:</strong> EC2, Lambda, ECS, EKS, Auto Scaling, Fargate, Batch</li>
-                <li><strong>Storage:</strong> S3, EBS, EFS, RDS, DynamoDB, ElastiCache, Redshift</li>
-                <li><strong>Networking:</strong> VPC, Route53, CloudFront, API Gateway, ALB/NLB, Direct Connect</li>
-                <li><strong>Security:</strong> IAM, KMS, Secrets Manager, WAF, Shield, GuardDuty, Config</li>
-                <li><strong>Monitoring:</strong> CloudWatch, CloudTrail, X-Ray, EventBridge, SNS, SQS</li>
-                <li><strong>Management:</strong> Systems Manager, Config, Organizations, Control Tower</li>
-            </ul>
-        </li>
-        <li><strong>DevOps Tools & Technologies:</strong>
-            <ul>
-                <li><strong>Containerization:</strong> Docker, Docker Compose, Container Registry</li>
-                <li><strong>Orchestration:</strong> Kubernetes, Helm, Rancher, OpenShift</li>
-                <li><strong>Infrastructure as Code:</strong> Terraform, Ansible, CloudFormation, CDK</li>
-                <li><strong>CI/CD:</strong> Jenkins, GitLab CI/CD, GitHub Actions, AWS CodePipeline</li>
-                <li><strong>Version Control:</strong> Git, GitHub, GitLab, Bitbucket, GitFlow</li>
-                <li><strong>Configuration Management:</strong> Ansible, Chef, Puppet, Salt</li>
-            </ul>
-        </li>
-        <li><strong>Monitoring & Observability:</strong>
-            <ul>
-                <li><strong>Monitoring:</strong> Prometheus, Grafana, CloudWatch, Datadog, New Relic</li>
-                <li><strong>Logging:</strong> ELK Stack (Elasticsearch, Logstash, Kibana), CloudWatch Logs, Fluentd</li>
-                <li><strong>APM:</strong> Jaeger, AWS X-Ray, Zipkin, AppDynamics</li>
-                <li><strong>Alerting:</strong> PagerDuty, OpsGenie, Slack, Email Notifications</li>
-            </ul>
-        </li>
-        <li><strong>Programming & Scripting:</strong>
-            <ul>
-                <li><strong>Languages:</strong> Python, Bash, PowerShell, Go, Node.js</li>
-                <li><strong>Web Technologies:</strong> HTML, CSS, JavaScript, React, Angular</li>
-                <li><strong>Databases:</strong> MySQL, PostgreSQL, MongoDB, Redis, Cassandra</li>
-                <li><strong>Configuration:</strong> YAML, JSON, XML, HCL (Terraform)</li>
-            </ul>
-        </li>
-        <li><strong>Operating Systems & Platforms:</strong>
-            <ul>
-                <li><strong>Linux:</strong> Ubuntu, CentOS, RHEL, Amazon Linux, Alpine</li>
-                <li><strong>Windows:</strong> Windows Server, PowerShell, Active Directory</li>
-                <li><strong>Cloud Platforms:</strong> AWS, Azure, GCP, DigitalOcean</li>
-            </ul>
-        </li>
-        <li><strong>Security & Compliance:</strong>
-            <ul>
-                <li><strong>Security:</strong> OWASP, Security Scanning, Vulnerability Assessment</li>
-                <li><strong>Compliance:</strong> SOC2, ISO27001, GDPR, HIPAA</li>
-                <li><strong>Authentication:</strong> OAuth2, SAML, LDAP, Active Directory</li>
-                <li><strong>Encryption:</strong> SSL/TLS, Data Encryption, Key Management</li>
-            </ul>
-        </li>
-        <li><strong>Soft Skills & Leadership:</strong>
-            <ul>
-                <li><strong>Methodologies:</strong> Agile/Scrum, Kanban, DevOps, SRE</li>
-                <li><strong>Problem Solving:</strong> Analytical Thinking, Troubleshooting, Root Cause Analysis</li>
-                <li><strong>Communication:</strong> Team Collaboration, Documentation, Presentation Skills</li>
-                <li><strong>Leadership:</strong> Project Management, Team Mentoring, Process Improvement</li>
-                <li><strong>Languages:</strong> Türkisch (Muttersprache), Englisch (C1), Deutsch (A2-B1)</li>
-            </ul>
-        </li>
-    </ul>
-    <p>Ich bin spezialisiert auf die Implementierung von skalierbaren, sicheren und wartbaren Cloud-Infrastrukturen mit modernen DevOps-Praktiken und automatisierten CI/CD-Pipelines. Meine mathematische Ausbildung und Führungserfahrung ermöglichen es mir, komplexe technische Probleme systematisch zu analysieren und innovative Lösungen zu entwickeln.</p>
-
-</section>
-
-        <section id="projekte">
-
+    <!-- Projekte Section -->
     <section id="projekte">
         <h2>Projekte</h2>
-        <div class="project">
-            <h3>Projekt 1: Microservices-Architektur mit Kubernetes</h3>
-            <p>Beschreibung: Entwicklung einer automatisierten Anwendung auf Basis der Microservices-Architektur mit Java, Spring Boot und Spring Cloud, integriert mit MySQL.</p>
-            <p>Technologien: Java, Spring Boot, Docker, Kubernetes, Rancher, Jenkins, Terraform, AWS EC2, Prometheus, Grafana</p>
-            <p>Ergebnisse: Vollständig containerisierte und orchestrierte Microservices-Anwendung mit automatisierten CI/CD-Pipelines und Monitoring.</p>
+        <div class="card">
+            <h3>E-Commerce Platform - AWS Migration</h3>
+            <p><strong>Technologien:</strong> AWS, Docker, Kubernetes, Terraform</p>
+            <ul>
+                <li>Migration einer monolithischen Anwendung zu Microservices-Architektur</li>
+                <li>Implementierung von CI/CD-Pipeline mit GitLab CI</li>
+                <li>Automatisierte Infrastruktur-Bereitstellung mit Terraform</li>
+                <li>Monitoring und Alerting mit Prometheus und Grafana</li>
+            </ul>
         </div>
-        <div class="project">
-            <h3>Projekt 2: Cloud-Native Blog-Anwendung auf AWS</h3>
-            <p>Beschreibung: Entwicklung und Bereitstellung einer Blog-Webanwendung auf AWS Cloud Infrastructure, basierend auf dem Django Framework mit Load Balancing und Auto Scaling.</p>
-            <p>Technologien: Django, AWS EC2, RDS, S3, Lambda, DynamoDB, CloudFront, Route53, ALB, Auto Scaling Group</p>
-            <p>Ergebnisse: Skalierbare, hochverfügbare Cloud-Anwendung mit automatischer Lastverteilung und serverlosen Funktionen.</p>
+
+        <div class="card">
+            <h3>DevOps Automation Platform</h3>
+            <p><strong>Technologien:</strong> Python, Docker, Kubernetes, Jenkins</p>
+            <ul>
+                <li>Entwicklung einer Plattform zur Automatisierung von Deployment-Prozessen</li>
+                <li>Integration von verschiedenen Cloud-Providern (AWS, Azure)</li>
+                <li>Self-Service-Portal für Entwicklerteams</li>
+                <li>Implementierung von Multi-Environment-Deployments</li>
+            </ul>
         </div>
-        <div class="project">
-            <h3>Projekt 3: Infrastructure as Code mit Terraform</h3>
-            <p>Beschreibung: Automatisierte AWS-Infrastruktur für statische Webseiten mit S3, CloudFront, Route53 und ACM-Zertifikaten, vollständig mit Terraform verwaltet.</p>
-            <p>Technologien: Terraform, AWS S3, CloudFront, Route53, ACM, GitHub Actions, CI/CD</p>
-            <p>Ergebnisse: Vollständig automatisierte, skalierbare und sichere Cloud-Infrastruktur mit automatischen Deployments.</p>
-        </div>
-        <div class="project">
-            <h3>Projekt 4: Kubernetes Phonebook Microservice</h3>
-            <p>Beschreibung: Entwicklung einer Phonebook-Microservice-Webanwendung mit MySQL-Datenbank, um die Microservice-Architektur praktisch umzusetzen.</p>
-            <p>Technologien: Docker, Kubernetes, MySQL, Frontend/Backend Services, Container Orchestration</p>
-            <p>Ergebnisse: Containerisierte Microservices-Anwendung mit Kubernetes-Deployments und skalierbarer Architektur.</p>
+
+        <div class="card">
+            <h3>Monitoring & Logging Solution</h3>
+            <p><strong>Technologien:</strong> ELK Stack, Prometheus, Grafana</p>
+            <ul>
+                <li>Aufbau einer zentralisierten Monitoring- und Logging-Infrastruktur</li>
+                <li>Custom Dashboards für verschiedene Anwendungen</li>
+                <li>Automatisierte Alerting-Mechanismen</li>
+                <li>Performance-Optimierung und Skalierung</li>
+            </ul>
         </div>
     </section>
-    <script src="../js/scripts.js"></script>
 
-</section>
-    <script src="../js/scripts.js"></script>
-
-</section>
-    <script src="../js/scripts.js"></script>
-
-</section>
-    <script src="../js/scripts.js"></script>
-
-</section>
-    <script src="../js/scripts.js"></script>
-
-</section>
-
-        <section id="bildungs">
-
+    <!-- Bildung Section -->
     <section id="bildungs">
-        <h2>Bildungsweg</h2>
-        <ul>
-            <li>
-                <h3>AWS SAA & DevOps Engineer Weiterbildung</h3>
-                <p>Clarusway IT Training School, Oktober 2023 – Oktober 2024</p>
-                <p>39-wöchige intensive Weiterbildung (1480 Stunden): IT Fundamentals, AWS SAA, DevOps</p>
-                <p>Schwerpunkte: AWS Cloud Services, Docker, Kubernetes, Terraform, CI/CD, Monitoring</p>
-            </li>
-            <li>
-                <h3>Studium der Mathematik - Abschluss</h3>
-                <p>İnönü Universität - Fachbereich Mathematik, Malatya, Türkei | 09/2007 – 06/2011</p>
-                <p>Schwerpunkte: Mathematik, Analytisches Denken, Problemlösung, Systemanalyse</p>
-            </li>
-            <li>
-                <h3>Sekundarschule - Allgemeine Hochschulreife</h3>
-                <p>Hasan Sadri Yetmişbir - Anatolian High School, Trabzon, Türkei | 09/2002 – 06/2006</p>
-                <p>Schwerpunkte: Mathematik, Naturwissenschaften, Fremdsprachen</p>
-            </li>
-            <li>
-                <h3>Grundschule</h3>
-                <p>Şehit Öğretmen Ali Bulut, Trabzon, Türkei | 09/1995 – 06/2002</p>
-            </li>
-            <li>
-                <h3>Deutsch A2-B1 Weiterbildung</h3>
-                <p>WIPA GmbH, Berlin | 06/2019 – heute</p>
-                <p>Kontinuierliche Verbesserung der deutschen Sprachkenntnisse</p>
-            </li>
-            <li>
-                <h3>Deutsch A1 Grundkurs</h3>
-                <p>Volkshochschule Neukölln, Berlin | 02/2019 – 05/2019</p>
-                <p>Grundlagen der deutschen Sprache für den beruflichen Einstieg</p>
-            </li>
-        </ul>
+        <h2>Bildung & Zertifizierungen</h2>
+        <div class="education-section">
+            <div class="education-card-new">
+                <div class="education-logo-col">
+                    <img class="education-logo-img" src="/icons/aws.png" alt="AWS">
+                </div>
+                <div class="education-content-col">
+                    <h3 class="education-school">AWS Certified Solutions Architect</h3>
+                    <p class="education-degree">Associate Level</p>
+                    <p class="education-date">2023</p>
+                    <p class="education-desc">Zertifizierung für AWS Cloud-Architektur und -Services</p>
+                </div>
+            </div>
+
+            <div class="education-card-new">
+                <div class="education-logo-col">
+                    <img class="education-logo-img" src="/icons/KSU.png" alt="KSU">
+                </div>
+                <div class="education-content-col">
+                    <h3 class="education-school">Kocaeli University</h3>
+                    <p class="education-degree">Bachelor of Computer Engineering</p>
+                    <p class="education-date">2017 - 2021</p>
+                    <p class="education-desc">Studium der Informatik mit Fokus auf Software-Entwicklung und Systemarchitektur</p>
+                </div>
+            </div>
+
+            <div class="education-card-new">
+                <div class="education-logo-col">
+                    <img class="education-logo-img" src="/icons/clarusway.jpeg" alt="Clarusway">
+                </div>
+                <div class="education-content-col">
+                    <h3 class="education-school">Clarusway</h3>
+                    <p class="education-degree">DevOps & Cloud Engineering Bootcamp</p>
+                    <p class="education-date">2022</p>
+                    <p class="education-desc">Intensivkurs für moderne DevOps-Praktiken und Cloud-Technologien</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-</section>
-
-</section>
-
-</section>
-
-</section>
-
-</section>
-
-        <section id="kontakt">
-
+    <!-- Kontakt Section -->
     <section id="kontakt">
         <h2>Kontakt</h2>
-        <p>Ich freue mich über Ihre Nachricht! Hier sind meine Kontaktdaten:</p>
         <div class="contact-list">
             <div class="contact-row">
-                <span class="contact-label"><i class="fas fa-phone"></i> Telefonnummer:</span>
-            </div>
-            <div class="contact-value">
-                <span>+49 178 611 0324</span>
-            </div>
-            <div class="contact-row">
-                <span class="contact-label"><i class="far fa-envelope"></i> E-Mail:</span>
-            </div>
-            <div class="contact-value">
-                <span><a href="mailto:ismailkilicaslan61@gmail.com">ismailkilicaslan61@gmail.com</a></span>
+                <div class="contact-label">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-value">
+                    <a href="mailto:ismail.kilicaslan@example.com">ismail.kilicaslan@example.com</a>
+                </div>
             </div>
             <div class="contact-row">
-                <span class="contact-label"><i class="fab fa-linkedin"></i> LinkedIn:</span>
-            </div>
-            <div class="contact-value">
-                <span><a href="https://linkedin.com/in/ismail-kilicaslan" target="_blank">linkedin.com/in/ismail-kilicaslan</a></span>
-            </div>
-            <div class="contact-row">
-                <span class="contact-label"><i class="fab fa-github"></i> GitHub:</span>
-            </div>
-            <div class="contact-value">
-                <span><a href="https://github.com/iskilicaslan61" target="_blank">github.com/ismail-kilicaslan</a></span>
+                <div class="contact-label">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <div class="contact-value">
+                    <a href="tel:+49123456789">+49 123 456 789</a>
+                </div>
             </div>
             <div class="contact-row">
-                <span class="contact-label"><i class="fas fa-map-marker-alt"></i> Adresse:</span>
-            </div>
-            <div class="contact-value">
-                <span>!!!</span>
+                <div class="contact-label">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="contact-value">
+                    Deutschland
+                </div>
             </div>
         </div>
-        <form action="#" method="post">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="message">Nachricht:</label>
-            <textarea id="message" name="message" required></textarea>
-            
-            <button type="submit">Absenden</button>
-        </form>
-    </section>
-    <script src="../js/scripts.js"></script>
 
-</section>
-    <script src="../js/scripts.js"></script>
-
-</section>
-    <script src="../js/scripts.js"></script>
-
-</section>
-    <script src="../js/scripts.js"></script>
-
-</section>
-    <script src="../js/scripts.js"></script>
-
-</section>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 ismailkilicaslan.de Alle Rechte vorbehalten.</p>
         <div class="social-icons">
-            <a href="https://linkedin.com/in/ismail-kilicaslan" target="_blank"><img src="assets/icons/linkedin.png" alt="LinkedIn"></a>
-<a href="https://github.com/ismail-kilicaslan" target="_blank"><img src="assets/icons/github.png" alt="GitHub"></a>
-<a href="https://www.xing.com/profile/Ismail_Kilicaslan057417/web_profiles" target="_blank"><img src="assets/icons/Xing.png" alt="Xing"></a>
-
+            <a href="https://github.com/ismailkilicaslan" target="_blank">
+                <img src="/icons/github.png" alt="GitHub">
+            </a>
+            <a href="https://linkedin.com/in/ismailkilicaslan" target="_blank">
+                <img src="/icons/linkedin.png" alt="LinkedIn">
+            </a>
+            <a href="https://xing.com/profile/ismail_kilicaslan" target="_blank">
+                <img src="/icons/Xing.png" alt="Xing">
+            </a>
         </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Ismail Kilicaslan. Alle Rechte vorbehalten.</p>
     </footer>
 
-    <button id="scrollToTop" onclick="scrollToTop()">↑</button>
-
-    <script>
-        // Show button on scroll
-        window.onscroll = function () {
-            const button = document.getElementById('scrollToTop');
-            if (document.documentElement.scrollTop > 100) {
-                button.style.display = 'block';
-            } else {
-                button.style.display = 'none';
-            }
-        };
-
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    </script>
+    <script type="module" src="/js/scripts.js"></script>
 </body>
 </html>

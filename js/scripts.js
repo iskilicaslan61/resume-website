@@ -1,110 +1,113 @@
-// Smooth scrolling for navigation links
-document.addEventListener('DOMContentLoaded', function () {
-  // Navigation smooth scrolling
-  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+// filepath: /cv-website/cv-website/src/js/scripts.js
 
-  navLinks.forEach(link => {
+document.addEventListener('DOMContentLoaded', function () {
+  // Profile image loading with fallback
+  loadProfileImage();
+
+  // Load content from src files
+  loadSrcContent();
+
+  // Smooth scrolling for internal links
+  const links = document.querySelectorAll('a[href^="#"]');
+  for (const link of links) {
     link.addEventListener('click', function (e) {
       e.preventDefault();
       const targetId = this.getAttribute('href');
-      const targetSection = document.querySelector(targetId);
-
-      if (targetSection) {
-        targetSection.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth'
         });
       }
     });
-  });
+  }
 
-  // Scroll to top button functionality
-  const scrollToTopBtn = document.getElementById('scrollToTop');
-
-  // Show/hide scroll to top button
-  window.addEventListener('scroll', function () {
-    if (window.pageYOffset > 300) {
-      scrollToTopBtn.style.display = 'block';
-    } else {
-      scrollToTopBtn.style.display = 'none';
-    }
-  });
-
-  // Scroll to top function
-  window.scrollToTop = function () {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+  // Form submission handling (example)
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      // Handle form submission logic here
+      alert('Form submitted!'); // Placeholder for actual submission logic
     });
-  };
-
-  // Active navigation highlighting
-  const sections = document.querySelectorAll('section[id]');
-  const navItems = document.querySelectorAll('.nav-links a');
-
-  window.addEventListener('scroll', function () {
-    let current = '';
-    const scrollPosition = window.scrollY + 100;
-
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-
-      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-        current = section.getAttribute('id');
-      }
-    });
-
-    navItems.forEach(item => {
-      item.classList.remove('active');
-      if (item.getAttribute('href') === `#${current}`) {
-        item.classList.add('active');
-      }
-    });
-  });
-
-  // Add fade-in animation for sections
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
-  const observer = new IntersectionObserver(function (entries) {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, observerOptions);
-
-  // Observe all sections
-  sections.forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(20px)';
-    section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(section);
-  });
-
-  // Add hover effects for cards
-  const cards = document.querySelectorAll('.card');
-  cards.forEach(card => {
-    card.addEventListener('mouseenter', function () {
-      this.style.transform = 'translateY(-5px)';
-      this.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.15)';
-    });
-
-    card.addEventListener('mouseleave', function () {
-      this.style.transform = 'translateY(0)';
-      this.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
-    });
-  });
-
-  // Add loading animation
-  window.addEventListener('load', function () {
-    document.body.classList.add('loaded');
-  });
+  }
 });
 
-// Export for module system
-export default {};
+// Profile image loading function with fallback
+function loadProfileImage() {
+  const profileImage = document.querySelector('.profile-image');
+  if (!profileImage) return;
+
+  const imageUrl = 'assets/images/ismail-profile.jpg';
+  const placeholderUrl = 'assets/images/profile-placeholder.svg';
+
+  // Try to load the actual profile image first
+  const img = new Image();
+  img.onload = function () {
+    profileImage.src = imageUrl;
+    profileImage.style.background = 'none';
+  };
+
+  img.onerror = function () {
+    // If actual image fails, use placeholder
+    profileImage.src = placeholderUrl;
+    console.log('Profile image not found, using placeholder');
+  };
+
+  img.src = imageUrl;
+}
+
+// Load content from src files
+function loadSrcContent() {
+  const contentMap = {
+    'berufserfahrungen': 'src/berufserfahrungen.html',
+    'kompetenzen': 'src/kompetenzen.html',
+    'projekte': 'src/projekte.html',
+    'bildungs': 'src/bildungs.html',
+    'kontakt': 'src/kontakt.html'
+  };
+
+  Object.keys(contentMap).forEach(sectionId => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      fetch(contentMap[sectionId])
+        .then(response => response.text())
+        .then(html => {
+          // Extract content from the src file
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const content = doc.querySelector('.section, .kompetenzen-section, section');
+
+          if (content) {
+            // Replace the section content
+            section.innerHTML = content.innerHTML;
+          }
+        })
+        .catch(error => {
+          console.log(`Could not load ${contentMap[sectionId]}:`, error);
+        });
+    }
+  });
+}
+
+// Dark mode toggle
+window.addEventListener('DOMContentLoaded', function () {
+  const toggle = document.getElementById('darkModeToggle');
+  const body = document.body;
+  // Load preference
+  if (localStorage.getItem('darkMode') === 'true') {
+    body.classList.add('dark-mode');
+    if (toggle) toggle.checked = true;
+  }
+  if (toggle) {
+    toggle.addEventListener('change', function () {
+      if (toggle.checked) {
+        body.classList.add('dark-mode');
+        localStorage.setItem('darkMode', 'true');
+      } else {
+        body.classList.remove('dark-mode');
+        localStorage.setItem('darkMode', 'false');
+      }
+    });
+  }
+});

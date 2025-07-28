@@ -1,180 +1,225 @@
-# Ismail Kilicaslan - DevOps & Cloud Engineer Resume Website
+# CV Website – Automated Static Site on AWS with Terraform & GitHub Actions
 
-Modern, responsive resume website built with Node.js and Vite.
+Bu proje, AWS'de tamamen otomatikleştirilmiş, profesyonel bir CV (özgeçmiş) web sitesidir. Infrastructure as Code (IaC) ile Terraform ve GitHub Actions ile sürekli dağıtım kullanır. Site global olarak erişilebilir, güvenli (HTTPS) ve güncellemesi kolaydır—sadece GitHub'a push yapın!
 
-## 🚀 Features
+**🌐 Website:** https://ismailkilicaslan.de  
+**📦 GitHub Repository:** https://github.com/iskilicaslan61/resume-website
 
-- **Modern Build System**: Built with Vite for fast development and optimized production builds
-- **Responsive Design**: Mobile-first approach with modern CSS Grid and Flexbox
-- **Smooth Animations**: CSS animations and JavaScript interactions for better UX
-- **SEO Optimized**: Semantic HTML structure for better search engine visibility
-- **Performance Optimized**: Optimized assets and lazy loading for better performance
+---
 
-## 🛠️ Tech Stack
+## 🚀 Özellikler
 
-- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **Build Tool**: Vite
-- **Styling**: Custom CSS with CSS Variables
-- **Icons**: Font Awesome
-- **Fonts**: Google Fonts (Roboto)
+* **Modern, responsive CV website** (HTML, CSS, JS, images, assets)
+* **AWS S3** for static website hosting
+* **AWS CloudFront** for CDN, HTTPS, and custom domains
+* **AWS Route53** for DNS management
+* **AWS ACM** for free SSL certificates (wildcard support)
+* **Terraform** for modular, repeatable infrastructure
+* **GitHub Actions** for automatic deployment (CI/CD)
+* **Best practices** for security, automation, and maintainability
 
-## 📁 Project Structure
+---
+
+## 🗂️ Proje Yapısı
 
 ```
 resume-website/
-├── assets/                 # Static assets (images, icons)
-│   ├── icons/             # Social media and company icons
-│   └── images/            # Profile and background images
+├── assets/                # Images, icons, fonts
 ├── css/                   # Stylesheets
-│   └── styles.css         # Main stylesheet
 ├── js/                    # JavaScript files
-│   └── scripts.js         # Main JavaScript file
-├── src/                   # Source HTML files (legacy)
-├── index.html             # Main HTML file
-├── package.json           # Node.js dependencies and scripts
-├── vite.config.js         # Vite configuration
-└── README.md              # Project documentation
+├── src/                   # HTML sections (for modular editing)
+│   ├── home.html
+│   ├── berufserfahrungen.html
+│   ├── kompetenzen.html
+│   ├── projekte.html
+│   ├── bildungs.html
+│   └── kontakt.html
+├── index.html             # Main entry point
+├── error.html             # Custom error page (for 404/403)
+├── terraform-static-website/ # All Terraform IaC code
+│   ├── main.tf
+│   ├── variables.tf
+│   ├── s3.tf
+│   ├── cert.tf
+│   ├── route53.tf
+│   ├── cloudfront.tf
+│   ├── outputs.tf
+│   └── README.md
+├── .github/workflows/deploy.yml # GitHub Actions CI/CD pipeline
+├── .gitignore             # Ignore Terraform state, cache, temp, etc.
+├── AWS_IAM_SETUP.md       # Guide for AWS IAM user & GitHub secrets
+└── README.md              # This file
 ```
 
-## 🚀 Getting Started
+---
 
-### Prerequisites
+## 🛠️ Yerel Geliştirme
 
-- Node.js (version 16 or higher)
-- npm or yarn
+1. **Repository'yi klonlayın:**  
+   ```bash
+   git clone https://github.com/iskilicaslan61/resume-website.git
+   cd resume-website
+   ```
 
-### Installation
+2. **Web sitenizi düzenleyin:**  
+   * Ana dosya: `index.html`  
+   * Stiller: `css/styles.css`  
+   * JavaScript: `js/scripts.js`  
+   * Resimler: `assets/images/`  
+   * Modüler HTML: `src/`
 
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd resume-website
-```
+3. **Yerel olarak önizleyin:**  
+   * VS Code Live Server kullanın veya `python3 -m http.server` ile önizleyin.
 
-2. Install dependencies:
-```bash
-npm install
-```
+---
 
-3. Start development server:
-```bash
-npm run dev
-```
+## ☁️ Infrastructure as Code (Terraform)
 
-The website will be available at `http://localhost:3000`
+Tüm AWS kaynakları, tam yeniden üretilebilirlik ve otomasyon için Terraform ile yönetilir.
 
-### Build for Production
+### **Otomatikleştirilen Öğeler:**
 
-```bash
-npm run build
-```
+* S3 bucket for static hosting
+* CloudFront distribution (CDN, HTTPS)
+* Route53 hosted zone and DNS records
+* ACM SSL certificate (wildcard, auto-validation)
 
-This will create a `dist` folder with optimized production files.
+### **Infrastructure'ı Dağıtma:**
 
-### Preview Production Build
+1. **Terraform'u yükleyin:** https://terraform.io/downloads
+2. **AWS credentials'ları yapılandırın** (`aws configure` veya environment variables ile)
+3. **Değişkenleri düzenleyin:**  
+   * `terraform-static-website/variables.tf` (domain, region, vb. ayarlayın)
+4. **Terraform'u başlatın:**  
+   ```bash
+   cd terraform-static-website
+   terraform init
+   ```
+5. **Planı gözden geçirin:**  
+   ```bash
+   terraform plan
+   ```
+6. **Infrastructure'ı uygulayın:**  
+   ```bash
+   terraform apply
+   ```
+7. **Çıktıları kontrol edin:**  
+   * S3 website endpoint  
+   * CloudFront domain  
+   * Route53 zone name
+   * **Route53 nameservers** (domain registrar için gerekli)
 
-```bash
-npm run preview
-```
+> **Önemli Notlar:**
+> 
+> * Tüm DNS kayıtları Terraform tarafından yönetilmelidir. Uygulamadan önce Route53'teki manuel kayıtları silin.
+> * CloudFront için ACM sertifikaları `us-east-1`'de oluşturulmalıdır.
+> * S3 bucket isimleri global olarak benzersiz olmalıdır.
 
-## 📝 Available Scripts
+---
 
-- `npm run dev` - Start development server with hot reload
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build locally
-- `npm run deploy` - Build and prepare for deployment
+## 🔐 AWS IAM & GitHub Secrets Kurulumu
 
-## 🎨 Customization
+GitHub Actions'ın AWS'ye dağıtım yapabilmesi için, sınırlı izinlere sahip bir IAM kullanıcısına ve credentials'larını GitHub secrets olarak saklamaya ihtiyacınız var.
 
-### Colors and Theme
+Detaylı adım adım rehber için `AWS_IAM_SETUP.md` dosyasına bakın.
 
-The website uses CSS variables for easy customization. Edit the `:root` section in `css/styles.css`:
+**Gerekli GitHub secrets:**
 
-```css
-:root {
-    --primary-color: #252C64;
-    --secondary-color: #FFD700;
-    --text-color: #333;
-    --background-color: #fff;
-    --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    --transition: all 0.3s ease;
-}
-```
+* `AWS_ACCESS_KEY_ID`
+* `AWS_SECRET_ACCESS_KEY`
+* `CLOUDFRONT_DISTRIBUTION_ID`
 
-### Content
+---
 
-- Update personal information in `index.html`
-- Replace profile image in `assets/images/`
-- Update social media links and icons
-- Modify sections as needed
+## 🌐 Domain Registrar Yapılandırması
 
-## 🌐 Deployment
+`ismailkilicaslan.de` domain'inizi AWS Route53'e yönlendirmek için:
 
-### Static Hosting
+1. **Terraform çıktısından nameserver'ları alın:**
+   ```bash
+   terraform output route53_nameservers
+   ```
 
-The built files in the `dist` folder can be deployed to any static hosting service:
+2. **Domain registrar'ınızda nameserver'ları güncelleyin:**
+   * Domain registrar'ınızın DNS yönetim paneline gidin
+   * Nameserver'ları Terraform'dan aldığınız değerlerle değiştirin
+   * Değişikliklerin yayılması 24-48 saat sürebilir
 
-- **Netlify**: Drag and drop the `dist` folder
-- **Vercel**: Connect your repository
-- **GitHub Pages**: Push to gh-pages branch
-- **AWS S3**: Upload files to S3 bucket
+---
 
-### AWS S3 + CloudFront (Recommended)
+## 🤖 CI/CD: GitHub Actions ile Otomatik Dağıtım
 
-This project includes Terraform configuration for AWS deployment:
+`main` branch'e her push, şu işlemleri yapan bir workflow'u tetikler:
 
-```bash
-cd terraform-static-website
-terraform init
-terraform plan
-terraform apply
-```
+1. Website dosyalarından oluşan bir deployment dizini oluşturur
+2. Dosyaları S3'e senkronize eder (silinen dosyaları kaldırır)
+3. CloudFront cache'ini geçersiz kılar (değişiklikler hemen canlı olur)
 
-## 📱 Responsive Design
+**Workflow dosyası:** `.github/workflows/deploy.yml`
 
-The website is fully responsive and optimized for:
-- Desktop (1200px+)
-- Tablet (768px - 1199px)
-- Mobile (320px - 767px)
+**Nasıl çalışır:**
 
-## 🔧 Development
+* Sadece web dosyaları dağıtılır (Terraform, .git, temp dosyaları, vb. göz ardı edilir)
+* Güvenli: AWS credentials'ları asla kodda saklanmaz, sadece GitHub secrets olarak
+* Hızlı: Sadece değişen dosyalar yüklenir
 
-### Adding New Sections
+---
 
-1. Add HTML structure to `index.html`
-2. Style the section in `css/styles.css`
-3. Add JavaScript functionality if needed in `js/scripts.js`
+## 📝 En İyi Uygulamalar & İpuçları
 
-### Adding New Features
+* **AWS credentials'larını veya Terraform state'ini asla git'e commit etmeyin**
+* **.gitignore kullanın** repository'nizi temiz tutmak için
+* **Tüm infrastructure kod olarak**: AWS Console'da manuel değişiklik yapmayın
+* **Modüler Terraform dosyaları kullanın** netlik ve yeniden kullanılabilirlik için
+* **Push etmeden önce yerel olarak test edin**
+* **Dağıtım durumu için GitHub Actions loglarını izleyin**
+* **AWS key'lerini düzenli olarak değiştirin**
 
-1. Install additional dependencies if needed:
-```bash
-npm install <package-name>
-```
+---
 
-2. Import and use in your JavaScript files
-3. Update Vite config if necessary
+## 🧩 Özelleştirme
 
-## 📄 License
+* **Domain'inizi değiştirin:** `variables.tf`'yi düzenleyin ve Route53/CloudFront ayarlarını güncelleyin
+* **Subdomain'ler ekleyin:** `cloudfront.tf` ve `route53.tf`'yi güncelleyin
+* **Region'ı değiştirin:** `variables.tf`'yi düzenleyin
+* **Yeni bölümler ekleyin:** `src/`'de yeni HTML dosyaları oluşturun ve `index.html`'de bağlayın
+* **Tasarımı değiştirin:** `css/styles.css` ve assets'leri düzenleyin
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+---
 
-## 👤 Author
+## 🆘 Sorun Giderme
 
-**Ismail Kilicaslan**
-- Email: ismail.kilicaslan@example.com
-- LinkedIn: [linkedin.com/in/ismailkilicaslan](https://linkedin.com/in/ismailkilicaslan)
-- GitHub: [github.com/ismailkilicaslan](https://github.com/ismailkilicaslan)
+* **DNS çalışmıyor mu?** Domain registrar'ınızdaki NS kayıtlarını ve Route53'i kontrol edin
+* **SSL hatası mı?** ACM sertifikasının doğrulandığından ve `us-east-1`'de olduğundan emin olun
+* **S3 erişim reddedildi mi?** Bucket policy ve public access ayarlarını kontrol edin
+* **GitHub Actions başarısız mı oldu?** Actions sekmesindeki logları kontrol edin
+* **CloudFront güncellenmiyor mu?** Invalidation birkaç dakika sürebilir
 
-## 🤝 Contributing
+---
 
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+## 📚 Kaynaklar
 
-## 📞 Support
+* [Terraform Documentation](https://www.terraform.io/docs)
+* [AWS S3 Static Website Hosting](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html)
+* [AWS CloudFront](https://docs.aws.amazon.com/cloudfront/)
+* [AWS Route53](https://docs.aws.amazon.com/route53/)
+* [GitHub Actions](https://docs.github.com/en/actions)
 
-If you have any questions or need support, please contact me at ismail.kilicaslan@example.com
+---
+
+## 📝 Lisans
+
+MIT
+
+---
+
+## 👤 Yazar
+
+İsmail Kılıçaslan
+
+---
+
+## 💡 Katkıda Bulunma
+
+Pull request'ler hoş karşılanır! Büyük değişiklikler için lütfen önce neyi değiştirmek istediğinizi tartışmak için bir issue açın.
 

@@ -2,6 +2,7 @@
   "name": "resume-website",
   "version": "1.0.0",
   "description": "Ismail Kilicaslan's DevOps & Cloud Engineer Resume Website",
+  "homepage": "https://ismailkilicaslan.github.io/resume-website",
   "type": "module",
   "scripts": {
     "dev": "vite",

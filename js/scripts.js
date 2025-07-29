@@ -38,7 +38,7 @@ function loadProfileImage() {
   const profileImage = document.querySelector('.profile-image');
   if (!profileImage) return;
 
-  const imageUrl = 'assets/images/ismail-profile.jpg';
+  const imageUrl = 'assets/images/profil.jpg';
   const placeholderUrl = 'assets/images/profile-placeholder.svg';
 
   // Try to load the actual profile image first
@@ -46,6 +46,7 @@ function loadProfileImage() {
   img.onload = function () {
     profileImage.src = imageUrl;
     profileImage.style.background = 'none';
+    console.log('Profile image loaded successfully');
   };
 
   img.onerror = function () {

@@ -1,27 +1,27 @@
-# 🚀 Hızlı Kurulum Rehberi - ismailkilicaslan.de
+# 🚀 Quick Setup Guide - ismailkilicaslan.de
 
-Bu rehber, `ismailkilicaslan.de` domain'iniz için AWS infrastructure'ını hızlıca kurmanızı sağlar.
+This guide helps you quickly set up AWS infrastructure for your `ismailkilicaslan.de` domain.
 
-## 📋 Ön Gereksinimler
+## 📋 Prerequisites
 
-- [ ] AWS hesabı
-- [ ] `ismailkilicaslan.de` domain'i
-- [ ] Terraform yüklü
-- [ ] AWS CLI yüklü ve yapılandırılmış
+- [ ] AWS account
+- [ ] `ismailkilicaslan.de` domain
+- [ ] Terraform installed
+- [ ] AWS CLI installed and configured
 
-## 🔧 Adım 1: Infrastructure'ı Dağıtın
+## 🔧 Step 1: Deploy Infrastructure
 
-### Windows için:
+### For Windows:
 ```cmd
 deploy.bat
 ```
 
-### Linux/Mac için:
+### For Linux/Mac:
 ```bash
 ./deploy.sh
 ```
 
-### Manuel olarak:
+### Manually:
 ```bash
 cd terraform-static-website
 terraform init
@@ -29,26 +29,26 @@ terraform plan
 terraform apply
 ```
 
-## 🌐 Adım 2: Domain Registrar'ı Yapılandırın
+## 🌐 Step 2: Configure Domain Registrar
 
-1. **Terraform çıktısından nameserver'ları alın:**
+1. **Get nameservers from Terraform output:**
    ```bash
    terraform output route53_nameservers
    ```
 
-2. **Domain registrar'ınızda nameserver'ları güncelleyin:**
-   - Domain registrar'ınızın DNS yönetim paneline gidin
-   - Nameserver'ları Terraform'dan aldığınız değerlerle değiştirin
-   - Değişikliklerin yayılması 24-48 saat sürebilir
+2. **Update nameservers in your domain registrar:**
+   - Go to your domain registrar's DNS management panel
+   - Replace nameservers with values from Terraform
+   - Changes can take 24-48 hours to propagate
 
-## 🔐 Adım 3: GitHub Actions Kurulumu
+## 🔐 Step 3: GitHub Actions Setup
 
-### 3.1 AWS IAM Kullanıcısı Oluşturun
+### 3.1 Create AWS IAM User
 
-1. **AWS Console'da IAM servisine gidin**
-2. **Yeni bir kullanıcı oluşturun:** `github-actions-deploy`
-3. **Programmatic access** seçin
-4. **Aşağıdaki policy'yi ekleyin:**
+1. **Go to IAM service in AWS Console**
+2. **Create a new user:** `github-actions-deploy`
+3. **Select Programmatic access**
+4. **Add the following policy:**
 
 ```json
 {
@@ -80,72 +80,72 @@ terraform apply
 }
 ```
 
-5. **Access Key ID ve Secret Access Key'i kaydedin**
+5. **Save the Access Key ID and Secret Access Key**
 
-### 3.2 GitHub Secrets Ekleme
+### 3.2 Add GitHub Secrets
 
-1. **Repository'nize gidin:** https://github.com/iskilicaslan61/resume-website
+1. **Go to your repository:** https://github.com/iskilicaslan61/resume-website
 2. **Settings** → **Secrets and variables** → **Actions**
-3. **Aşağıdaki secrets'ları ekleyin:**
+3. **Add the following secrets:**
 
 | Secret Name | Value |
 |-------------|-------|
-| `AWS_ACCESS_KEY_ID` | IAM kullanıcısının Access Key ID'si |
-| `AWS_SECRET_ACCESS_KEY` | IAM kullanıcısının Secret Access Key'i |
-| `CLOUDFRONT_DISTRIBUTION_ID` | Terraform çıktısından alınan Distribution ID |
+| `AWS_ACCESS_KEY_ID` | IAM user's Access Key ID |
+| `AWS_SECRET_ACCESS_KEY` | IAM user's Secret Access Key |
+| `CLOUDFRONT_DISTRIBUTION_ID` | Distribution ID from Terraform output |
 
-## 🎯 Adım 4: Test Edin
+## 🎯 Step 4: Test
 
-1. **Repository'de küçük bir değişiklik yapın**
-2. **Commit ve push yapın**
-3. **GitHub Actions'da workflow'un çalışmasını izleyin**
-4. **https://ismailkilicaslan.de adresini ziyaret edin**
+1. **Make a small change in the repository**
+2. **Commit and push**
+3. **Watch the workflow run in GitHub Actions**
+4. **Visit https://ismailkilicaslan.de**
 
-## 📁 Proje Yapısı
+## 📁 Project Structure
 
 ```
 resume-website/
-├── index.html              # Ana sayfa
-├── css/styles.css          # Stiller
+├── index.html              # Main page
+├── css/styles.css          # Styles
 ├── js/scripts.js           # JavaScript
-├── assets/                 # Resimler ve ikonlar
-├── src/                    # HTML bölümleri
+├── assets/                 # Images and icons
+├── src/                    # HTML sections
 ├── terraform-static-website/ # AWS infrastructure
 ├── .github/workflows/      # GitHub Actions
 ├── deploy.bat              # Windows deployment script
 ├── deploy.sh               # Linux/Mac deployment script
-└── README.md               # Detaylı dokümantasyon
+└── README.md               # Detailed documentation
 ```
 
-## 🔧 Web Sitesini Düzenleme
+## 🔧 Editing the Website
 
-- **Ana sayfa:** `index.html`
-- **Stiller:** `css/styles.css`
+- **Main page:** `index.html`
+- **Styles:** `css/styles.css`
 - **JavaScript:** `js/scripts.js`
-- **Resimler:** `assets/images/`
-- **Bölümler:** `src/` dizinindeki HTML dosyaları
+- **Images:** `assets/images/`
+- **Sections:** HTML files in `src/` directory
 
-## 🆘 Sorun Giderme
+## 🆘 Troubleshooting
 
-### DNS çalışmıyor
-- Nameserver'ların doğru ayarlandığını kontrol edin
-- 24-48 saat bekleyin
+### DNS not working
+- Check that nameservers are set correctly
+- Wait 24-48 hours
 
-### GitHub Actions başarısız
-- AWS credentials'ları kontrol edin
-- CloudFront Distribution ID'nin doğru olduğunu kontrol edin
+### GitHub Actions failed
+- Check AWS credentials
+- Verify CloudFront Distribution ID is correct
 
-### SSL hatası
-- ACM sertifikasının doğrulandığını kontrol edin
-- CloudFront distribution'ın aktif olduğunu kontrol edin
+### SSL error
+- Check that ACM certificate is validated
+- Verify CloudFront distribution is active
 
-## 📞 Destek
+## 📞 Support
 
-Sorun yaşarsanız:
-1. GitHub Actions loglarını kontrol edin
-2. AWS CloudTrail'de hataları arayın
-3. Terraform state'ini kontrol edin
+If you encounter issues:
+1. Check GitHub Actions logs
+2. Look for errors in AWS CloudTrail
+3. Check Terraform state
 
-## 🎉 Başarı!
+## 🎉 Success!
 
-Artık `ismailkilicaslan.de` adresinde profesyonel CV web siteniz yayında! Her değişiklik GitHub'a push ettiğinizde otomatik olarak güncellenecek. 
+Your professional CV website is now live at `ismailkilicaslan.de`! Every change you push to GitHub will be automatically updated. 

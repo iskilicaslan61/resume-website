@@ -1,13 +1,13 @@
 # CV Website – Automated Static Site on AWS with Terraform & GitHub Actions
 
-Bu proje, AWS'de tamamen otomatikleştirilmiş, profesyonel bir CV (özgeçmiş) web sitesidir. Infrastructure as Code (IaC) ile Terraform ve GitHub Actions ile sürekli dağıtım kullanır. Site global olarak erişilebilir, güvenli (HTTPS) ve güncellemesi kolaydır—sadece GitHub'a push yapın!
+This project is a fully automated, professional CV (resume) website on AWS. It uses Infrastructure as Code (IaC) with Terraform and continuous deployment with GitHub Actions. The site is globally accessible, secure (HTTPS), and easy to update—just push to GitHub!
 
 **🌐 Website:** https://ismailkilicaslan.de  
 **📦 GitHub Repository:** https://github.com/iskilicaslan61/resume-website
 
 ---
 
-## 🚀 Özellikler
+## 🚀 Features
 
 * **Modern, responsive CV website** (HTML, CSS, JS, images, assets)
 * **AWS S3** for static website hosting
@@ -20,7 +20,7 @@ Bu proje, AWS'de tamamen otomatikleştirilmiş, profesyonel bir CV (özgeçmiş)
 
 ---
 
-## 🗂️ Proje Yapısı
+## 🗂️ Project Structure
 
 ```
 resume-website/
@@ -53,77 +53,77 @@ resume-website/
 
 ---
 
-## 🛠️ Yerel Geliştirme
+## 🛠️ Local Development
 
-1. **Repository'yi klonlayın:**  
+1. **Clone the repository:**  
    ```bash
    git clone https://github.com/iskilicaslan61/resume-website.git
    cd resume-website
    ```
 
-2. **Web sitenizi düzenleyin:**  
-   * Ana dosya: `index.html`  
-   * Stiller: `css/styles.css`  
+2. **Edit your website:**  
+   * Main file: `index.html`  
+   * Styles: `css/styles.css`  
    * JavaScript: `js/scripts.js`  
-   * Resimler: `assets/images/`  
-   * Modüler HTML: `src/`
+   * Images: `assets/images/`  
+   * Modular HTML: `src/`
 
-3. **Yerel olarak önizleyin:**  
-   * VS Code Live Server kullanın veya `python3 -m http.server` ile önizleyin.
+3. **Preview locally:**  
+   * Use VS Code Live Server or preview with `python3 -m http.server`.
 
 ---
 
 ## ☁️ Infrastructure as Code (Terraform)
 
-Tüm AWS kaynakları, tam yeniden üretilebilirlik ve otomasyon için Terraform ile yönetilir.
+All AWS resources are managed with Terraform for complete reproducibility and automation.
 
-### **Otomatikleştirilen Öğeler:**
+### **Automated Components:**
 
 * S3 bucket for static hosting
 * CloudFront distribution (CDN, HTTPS)
 * Route53 hosted zone and DNS records
 * ACM SSL certificate (wildcard, auto-validation)
 
-### **Infrastructure'ı Dağıtma:**
+### **Deploying Infrastructure:**
 
-1. **Terraform'u yükleyin:** https://terraform.io/downloads
-2. **AWS credentials'ları yapılandırın** (`aws configure` veya environment variables ile)
-3. **Değişkenleri düzenleyin:**  
-   * `terraform-static-website/variables.tf` (domain, region, vb. ayarlayın)
-4. **Terraform'u başlatın:**  
+1. **Install Terraform:** https://terraform.io/downloads
+2. **Configure AWS credentials** (`aws configure` or environment variables)
+3. **Edit variables:**  
+   * `terraform-static-website/variables.tf` (set domain, region, etc.)
+4. **Initialize Terraform:**  
    ```bash
    cd terraform-static-website
    terraform init
    ```
-5. **Planı gözden geçirin:**  
+5. **Review the plan:**  
    ```bash
    terraform plan
    ```
-6. **Infrastructure'ı uygulayın:**  
+6. **Apply infrastructure:**  
    ```bash
    terraform apply
    ```
-7. **Çıktıları kontrol edin:**  
+7. **Check outputs:**  
    * S3 website endpoint  
    * CloudFront domain  
    * Route53 zone name
-   * **Route53 nameservers** (domain registrar için gerekli)
+   * **Route53 nameservers** (required for domain registrar)
 
-> **Önemli Notlar:**
+> **Important Notes:**
 > 
-> * Tüm DNS kayıtları Terraform tarafından yönetilmelidir. Uygulamadan önce Route53'teki manuel kayıtları silin.
-> * CloudFront için ACM sertifikaları `us-east-1`'de oluşturulmalıdır.
-> * S3 bucket isimleri global olarak benzersiz olmalıdır.
+> * All DNS records should be managed by Terraform. Delete manual records in Route53 before applying.
+> * ACM certificates for CloudFront must be created in `us-east-1`.
+> * S3 bucket names must be globally unique.
 
 ---
 
-## 🔐 AWS IAM & GitHub Secrets Kurulumu
+## 🔐 AWS IAM & GitHub Secrets Setup
 
-GitHub Actions'ın AWS'ye dağıtım yapabilmesi için, sınırlı izinlere sahip bir IAM kullanıcısına ve credentials'larını GitHub secrets olarak saklamaya ihtiyacınız var.
+For GitHub Actions to deploy to AWS, you need a limited-permission IAM user and store their credentials as GitHub secrets.
 
-Detaylı adım adım rehber için `AWS_IAM_SETUP.md` dosyasına bakın.
+See the `AWS_IAM_SETUP.md` file for detailed step-by-step guide.
 
-**Gerekli GitHub secrets:**
+**Required GitHub secrets:**
 
 * `AWS_ACCESS_KEY_ID`
 * `AWS_SECRET_ACCESS_KEY`
@@ -131,73 +131,73 @@ Detaylı adım adım rehber için `AWS_IAM_SETUP.md` dosyasına bakın.
 
 ---
 
-## 🌐 Domain Registrar Yapılandırması
+## 🌐 Domain Registrar Configuration
 
-`ismailkilicaslan.de` domain'inizi AWS Route53'e yönlendirmek için:
+To point your `ismailkilicaslan.de` domain to AWS Route53:
 
-1. **Terraform çıktısından nameserver'ları alın:**
+1. **Get nameservers from Terraform output:**
    ```bash
    terraform output route53_nameservers
    ```
 
-2. **Domain registrar'ınızda nameserver'ları güncelleyin:**
-   * Domain registrar'ınızın DNS yönetim paneline gidin
-   * Nameserver'ları Terraform'dan aldığınız değerlerle değiştirin
-   * Değişikliklerin yayılması 24-48 saat sürebilir
+2. **Update nameservers in your domain registrar:**
+   * Go to your domain registrar's DNS management panel
+   * Replace existing NS (Name Server) records with the four NS records from Terraform
+   * **Important:** DNS propagation can take 24-48 hours
 
 ---
 
-## 🤖 CI/CD: GitHub Actions ile Otomatik Dağıtım
+## 🤖 CI/CD: Automatic Deployment with GitHub Actions
 
-`main` branch'e her push, şu işlemleri yapan bir workflow'u tetikler:
+Every push to the `main` branch triggers a workflow that:
 
-1. Website dosyalarından oluşan bir deployment dizini oluşturur
-2. Dosyaları S3'e senkronize eder (silinen dosyaları kaldırır)
-3. CloudFront cache'ini geçersiz kılar (değişiklikler hemen canlı olur)
+1. Creates a deployment directory from website files
+2. Syncs files to S3 (removes deleted files)
+3. Invalidates CloudFront cache (changes go live immediately)
 
-**Workflow dosyası:** `.github/workflows/deploy.yml`
+**Workflow file:** `.github/workflows/deploy.yml`
 
-**Nasıl çalışır:**
+**How it works:**
 
-* Sadece web dosyaları dağıtılır (Terraform, .git, temp dosyaları, vb. göz ardı edilir)
-* Güvenli: AWS credentials'ları asla kodda saklanmaz, sadece GitHub secrets olarak
-* Hızlı: Sadece değişen dosyalar yüklenir
-
----
-
-## 📝 En İyi Uygulamalar & İpuçları
-
-* **AWS credentials'larını veya Terraform state'ini asla git'e commit etmeyin**
-* **.gitignore kullanın** repository'nizi temiz tutmak için
-* **Tüm infrastructure kod olarak**: AWS Console'da manuel değişiklik yapmayın
-* **Modüler Terraform dosyaları kullanın** netlik ve yeniden kullanılabilirlik için
-* **Push etmeden önce yerel olarak test edin**
-* **Dağıtım durumu için GitHub Actions loglarını izleyin**
-* **AWS key'lerini düzenli olarak değiştirin**
+* Only web files are deployed (Terraform, .git, temp files, etc. are ignored)
+* Secure: AWS credentials are never stored in code, only as GitHub secrets
+* Fast: Only changed files are uploaded
 
 ---
 
-## 🧩 Özelleştirme
+## 📝 Best Practices & Tips
 
-* **Domain'inizi değiştirin:** `variables.tf`'yi düzenleyin ve Route53/CloudFront ayarlarını güncelleyin
-* **Subdomain'ler ekleyin:** `cloudfront.tf` ve `route53.tf`'yi güncelleyin
-* **Region'ı değiştirin:** `variables.tf`'yi düzenleyin
-* **Yeni bölümler ekleyin:** `src/`'de yeni HTML dosyaları oluşturun ve `index.html`'de bağlayın
-* **Tasarımı değiştirin:** `css/styles.css` ve assets'leri düzenleyin
-
----
-
-## 🆘 Sorun Giderme
-
-* **DNS çalışmıyor mu?** Domain registrar'ınızdaki NS kayıtlarını ve Route53'i kontrol edin
-* **SSL hatası mı?** ACM sertifikasının doğrulandığından ve `us-east-1`'de olduğundan emin olun
-* **S3 erişim reddedildi mi?** Bucket policy ve public access ayarlarını kontrol edin
-* **GitHub Actions başarısız mı oldu?** Actions sekmesindeki logları kontrol edin
-* **CloudFront güncellenmiyor mu?** Invalidation birkaç dakika sürebilir
+* **Never commit AWS credentials or Terraform state to git**
+* **Use .gitignore** to keep your repository clean
+* **All infrastructure as code**: Don't make manual changes in AWS Console
+* **Use modular Terraform files** for clarity and reusability
+* **Test locally before pushing**
+* **Monitor GitHub Actions logs for deployment status**
+* **Rotate AWS keys regularly**
 
 ---
 
-## 📚 Kaynaklar
+## 🧩 Customization
+
+* **Change your domain:** Edit `variables.tf` and update Route53/CloudFront settings
+* **Add subdomains:** Update `cloudfront.tf` and `route53.tf`
+* **Change region:** Edit `variables.tf`
+* **Add new sections:** Create new HTML files in `src/` and link them in `index.html`
+* **Change design:** Edit `css/styles.css` and assets
+
+---
+
+## 🆘 Troubleshooting
+
+* **DNS not working?** Check NS records in your domain registrar and Route53
+* **SSL error?** Make sure ACM certificate is validated and in `us-east-1`
+* **S3 access denied?** Check bucket policy and public access settings
+* **GitHub Actions failed?** Check logs in the Actions tab
+* **CloudFront not updating?** Invalidation can take a few minutes
+
+---
+
+## 📚 Resources
 
 * [Terraform Documentation](https://www.terraform.io/docs)
 * [AWS S3 Static Website Hosting](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html)
@@ -207,19 +207,19 @@ Detaylı adım adım rehber için `AWS_IAM_SETUP.md` dosyasına bakın.
 
 ---
 
-## 📝 Lisans
+## 📝 License
 
 MIT
 
 ---
 
-## 👤 Yazar
+## 👤 Author
 
 İsmail Kılıçaslan
 
 ---
 
-## 💡 Katkıda Bulunma
+## 💡 Contributing
 
-Pull request'ler hoş karşılanır! Büyük değişiklikler için lütfen önce neyi değiştirmek istediğinizi tartışmak için bir issue açın.
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
 

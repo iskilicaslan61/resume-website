@@ -9,6 +9,7 @@ resource "aws_route53_zone" "main" {
 
 # Create alias A records for each domain/subdomain to point to CloudFront
 # IMPORTANT: All DNS records are managed by Terraform. Delete any manual records before applying.
+# Note: Alias records don't support TTL - AWS manages it automatically for optimal performance
 resource "aws_route53_record" "cloudfront_alias" {
   for_each = toset(var.aliases)
   zone_id = aws_route53_zone.main.zone_id

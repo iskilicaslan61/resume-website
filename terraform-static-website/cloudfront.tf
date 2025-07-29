@@ -2,10 +2,13 @@
 resource "aws_cloudfront_distribution" "cdn" {
   # The S3 static website endpoint as the origin
   origin {
-    domain_name = aws_s3_bucket.website.bucket_regional_domain_name
+    domain_name = aws_s3_bucket.website.website_endpoint
     origin_id   = "s3-website"
-    s3_origin_config {
-      origin_access_identity = "" # Eğer OAI kullanıyorsan buraya ekle
+    custom_origin_config {
+      http_port              = 80
+      https_port             = 443
+      origin_protocol_policy = "http-only"
+      origin_ssl_protocols   = ["TLSv1.2"]
     }
   }
 
@@ -26,6 +29,19 @@ resource "aws_cloudfront_distribution" "cdn" {
 
     # Use AWS Managed CachingOptimized policy for efficient caching
     cache_policy_id = "658327ea-f89d-4fab-a63d-7e88639e58f6"  # Managed-CachingOptimized
+  }
+
+  # Error page configuration for SPA routing
+  custom_error_response {
+    error_code         = 404
+    response_code      = "200"
+    response_page_path = "/index.html"
+  }
+
+  custom_error_response {
+    error_code         = 403
+    response_code      = "200"
+    response_page_path = "/index.html"
   }
 
   # Use the lowest cost edge locations (US, Canada, Europe)

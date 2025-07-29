@@ -1,31 +1,31 @@
 # AWS IAM Setup Guide for GitHub Actions Deployment
 
-Bu rehber, GitHub Actions'ın AWS'ye dağıtım yapabilmesi için gerekli IAM kullanıcısını ve politikalarını oluşturmayı açıklar.
+This guide explains how to create the necessary IAM user and policies for GitHub Actions to deploy to AWS.
 
-## 🎯 Hedef
+## 🎯 Objective
 
-GitHub Actions workflow'unuzun şu işlemleri yapabilmesi için gerekli izinleri sağlamak:
-- S3 bucket'a dosya yükleme
+To provide the necessary permissions for your GitHub Actions workflow to perform the following operations:
+- Upload files to S3 bucket
 - CloudFront cache invalidation
-- Sadece gerekli minimum izinler
+- Only the minimum required permissions
 
-## 📋 Adım Adım Kurulum
+## 📋 Step-by-Step Setup
 
-### 1. AWS IAM Kullanıcısı Oluşturma
+### 1. Creating AWS IAM User
 
-1. **AWS Console'a giriş yapın** ve IAM servisine gidin
-2. **"Users"** sekmesine tıklayın
-3. **"Create user"** butonuna tıklayın
-4. **Kullanıcı adını girin:** `github-actions-deploy`
-5. **"Programmatic access"** seçeneğini işaretleyin
-6. **"Next: Permissions"** butonuna tıklayın
+1. **Log into AWS Console** and go to IAM service
+2. **Click on "Users"** tab
+3. **Click "Create user"** button
+4. **Enter username:** `github-actions-deploy`
+5. **Check "Programmatic access"** option
+6. **Click "Next: Permissions"** button
 
-### 2. IAM Policy Oluşturma
+### 2. Creating IAM Policy
 
-1. **"Attach policies directly"** seçeneğini seçin
-2. **"Create policy"** butonuna tıklayın
-3. **JSON** sekmesine tıklayın
-4. **Aşağıdaki policy'yi yapıştırın:**
+1. **Select "Attach policies directly"** option
+2. **Click "Create policy"** button
+3. **Click on "JSON"** tab
+4. **Paste the following policy:**
 
 ```json
 {
@@ -57,121 +57,121 @@ GitHub Actions workflow'unuzun şu işlemleri yapabilmesi için gerekli izinleri
 }
 ```
 
-5. **"Next: Tags"** butonuna tıklayın (opsiyonel)
-6. **"Next: Review"** butonuna tıklayın
-7. **Policy adını girin:** `GitHubActionsDeployPolicy`
-8. **"Create policy"** butonuna tıklayın
+5. **Click "Next: Tags"** button (optional)
+6. **Click "Next: Review"** button
+7. **Enter policy name:** `GitHubActionsDeployPolicy`
+8. **Click "Create policy"** button
 
-### 3. Policy'yi Kullanıcıya Ekleme
+### 3. Adding Policy to User
 
-1. **Oluşturduğunuz kullanıcıya geri dönün**
-2. **"Attach policies directly"** seçeneğini seçin
-3. **Arama kutusuna** `GitHubActionsDeployPolicy` yazın
-4. **Policy'yi seçin** ve **"Next: Review"** butonuna tıklayın
-5. **"Create user"** butonuna tıklayın
+1. **Go back to your created user**
+2. **Select "Attach policies directly"** option
+3. **In the search box** type `GitHubActionsDeployPolicy`
+4. **Select the policy** and click **"Next: Review"** button
+5. **Click "Create user"** button
 
-### 4. Access Keys Oluşturma
+### 4. Creating Access Keys
 
-1. **Oluşturulan kullanıcıya tıklayın**
-2. **"Security credentials"** sekmesine tıklayın
-3. **"Create access key"** butonuna tıklayın
-4. **"Application running outside AWS"** seçeneğini seçin
-5. **"Next"** butonuna tıklayın
-6. **"Create access key"** butonuna tıklayın
-7. **Access Key ID ve Secret Access Key'i kaydedin**
+1. **Click on the created user**
+2. **Click on "Security credentials"** tab
+3. **Click "Create access key"** button
+4. **Select "Application running outside AWS"** option
+5. **Click "Next"** button
+6. **Click "Create access key"** button
+7. **Save the Access Key ID and Secret Access Key**
 
-> ⚠️ **ÖNEMLİ:** Secret Access Key'i sadece bir kez gösterilir. Güvenli bir yere kaydedin!
+> ⚠️ **IMPORTANT:** Secret Access Key is shown only once. Save it in a secure place!
 
-## 🔐 GitHub Secrets Kurulumu
+## 🔐 GitHub Secrets Setup
 
-### 1. GitHub Repository'ye Gidin
+### 1. Go to GitHub Repository
 
-1. **Repository'nize gidin:** https://github.com/iskilicaslan61/resume-website
-2. **"Settings"** sekmesine tıklayın
-3. **Sol menüden "Secrets and variables"** → **"Actions"** seçin
+1. **Go to your repository:** https://github.com/iskilicaslan61/resume-website
+2. **Click on "Settings"** tab
+3. **From left menu select "Secrets and variables"** → **"Actions"**
 
-### 2. Secrets Ekleme
+### 2. Adding Secrets
 
-Aşağıdaki 3 secret'ı ekleyin:
+Add the following 3 secrets:
 
 #### AWS_ACCESS_KEY_ID
 - **Name:** `AWS_ACCESS_KEY_ID`
-- **Value:** IAM kullanıcısından aldığınız Access Key ID
+- **Value:** Access Key ID from your IAM user
 
 #### AWS_SECRET_ACCESS_KEY
 - **Name:** `AWS_SECRET_ACCESS_KEY`
-- **Value:** IAM kullanıcısından aldığınız Secret Access Key
+- **Value:** Secret Access Key from your IAM user
 
 #### CLOUDFRONT_DISTRIBUTION_ID
 - **Name:** `CLOUDFRONT_DISTRIBUTION_ID`
-- **Value:** CloudFront distribution ID (Terraform çıktısından alınacak)
+- **Value:** CloudFront distribution ID (to be obtained from Terraform output)
 
-### 3. CloudFront Distribution ID'yi Alma
+### 3. Getting CloudFront Distribution ID
 
-Terraform'u çalıştırdıktan sonra:
+After running Terraform:
 
 ```bash
 cd terraform-static-website
 terraform output cloudfront_distribution_id
 ```
 
-Bu komutun çıktısını `CLOUDFRONT_DISTRIBUTION_ID` secret'ına ekleyin.
+Add the output of this command to the `CLOUDFRONT_DISTRIBUTION_ID` secret.
 
-## 🔍 Test Etme
+## 🔍 Testing
 
-### 1. Test Commit'i Yapın
+### 1. Make a Test Commit
 
 ```bash
-# Repository'nizi klonlayın (eğer henüz yapmadıysanız)
+# Clone your repository (if you haven't already)
 git clone https://github.com/iskilicaslan61/resume-website.git
 cd resume-website
 
-# Küçük bir değişiklik yapın
+# Make a small change
 echo "# Test" >> README.md
 
-# Commit ve push yapın
+# Commit and push
 git add README.md
 git commit -m "Test deployment"
 git push origin main
 ```
 
-### 2. GitHub Actions'ı İzleyin
+### 2. Monitor GitHub Actions
 
-1. **Repository'nizde "Actions"** sekmesine gidin
-2. **Workflow'un çalışmasını bekleyin**
-3. **Başarılı olup olmadığını kontrol edin**
+1. **Go to "Actions"** tab in your repository
+2. **Wait for the workflow to run**
+3. **Check if it was successful**
 
-## 🛡️ Güvenlik En İyi Uygulamaları
+## 🛡️ Security Best Practices
 
-### 1. Minimum İzin Prensibi
-- Kullanıcı sadece gerekli minimum izinlere sahip
-- Sadece belirli S3 bucket'a erişim
-- Sadece CloudFront invalidation izni
+### 1. Principle of Least Privilege
+- User has only the minimum required permissions
+- Access only to specific S3 bucket
+- Only CloudFront invalidation permission
 
-### 2. Düzenli Key Rotasyonu
-- Access key'leri düzenli olarak değiştirin (3-6 ayda bir)
-- Eski key'leri hemen silin
+### 2. Regular Key Rotation
+- Rotate access keys regularly (every 3-6 months)
+- Delete old keys immediately
 
 ### 3. Monitoring
-- CloudTrail ile API çağrılarını izleyin
-- Anormal aktiviteleri kontrol edin
+- Monitor API calls with CloudTrail
+- Check for abnormal activities
 
-## 🆘 Sorun Giderme
+## 🆘 Troubleshooting
 
-### "Access Denied" Hatası
-- IAM policy'nin doğru eklendiğinden emin olun
-- S3 bucket adının doğru olduğunu kontrol edin
-- CloudFront distribution ID'nin doğru olduğunu kontrol edin
+### "Access Denied" Error
+- Make sure IAM policy is correctly attached
+- Check that S3 bucket name is correct
+- Verify CloudFront distribution ID is correct
 
-### "Invalid credentials" Hatası
-- Access key'lerin doğru kopyalandığını kontrol edin
-- GitHub secrets'ın doğru adlandırıldığını kontrol edin
+### "Invalid credentials" Error
+- Check that access keys are copied correctly
+- Verify GitHub secrets are named correctly
 
-### "Distribution not found" Hatası
-- CloudFront distribution ID'nin güncel olduğunu kontrol edin
-- Terraform'u yeniden çalıştırıp yeni ID'yi alın
+### "Distribution not found" Error
+- Check that CloudFront distribution ID is current
+- Re-run Terraform and get the new ID
 
-## 📚 Ek Kaynaklar
+## 📚 Additional Resources
 
 - [AWS IAM Best Practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)
 - [GitHub Actions Security](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions)

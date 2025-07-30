@@ -1,7 +1,12 @@
-# Hide everything except index.html
+# Hide everything except index.html and .gitignore
 *
-!index.html
 !.gitignore
+!index.html
+
+# Node modules
+node_modules/
+package.json
+package-lock.json
 
 # Terraform
 .terraform/
@@ -9,6 +14,14 @@
 *.tfstate.backup
 *.tfstate.*
 .terraform.lock.hcl
+terraform-static-website/
+
+# Assets and public files
+assets/
+public/
+css/
+js/
+src/
 
 # System files
 .DS_Store
@@ -24,14 +37,15 @@ Thumbs.db
 # Deployment directories
 deploy-dist/
 
-# Terraform state files (specific to terraform-static-website)
-terraform-static-website/terraform.tfstate
-terraform-static-website/terraform.tfstate.backup
-terraform-static-website/terraform.tfstate.*.backup
+# Build files
+build.js
+deploy.bat
+deploy.sh
 
-# Terraform cache and lock files
-terraform-static-website/.terraform/
-terraform-static-website/.terraform.lock.hcl
+# Documentation
+README.md
+QUICK_SETUP.md
+AWS_IAM_SETUP.md
 
 # Temporary JSON files
 delete-cname.json

@@ -3,16 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ismail Kilicaslan - DevOps & Cloud Engineer</title>
-    <meta name="description" content="DevOps & Cloud Engineer mit fundierten Kenntnissen in AWS, Kubernetes, Docker, Terraform und CI/CD-Pipelines">
-    <meta name="keywords" content="DevOps, Cloud Engineer, AWS, Kubernetes, Docker, Terraform, CI/CD">
-    <link rel="stylesheet" href="css/styles.css">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
+    <title>Ismail Kilicaslan - Coming Soon</title>
+    <meta name="description" content="Ismail Kilicaslan - DevOps & Cloud Engineer Portfolio - Coming Soon">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Modern CSS Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -21,332 +16,70 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Fade-in animation */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        /* Navigation Styles */
-        .nav-bar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(37, 44, 100, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            transition: all 0.3s ease;
-        }
-
-        .nav-bar.scrolled {
-            background: rgba(37, 44, 100, 0.98);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .menu {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            list-style: none;
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .menu a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            position: relative;
-        }
-
-        .menu a:hover {
-            color: #FFD700;
-            background: rgba(255, 215, 0, 0.1);
-            transform: translateY(-2px);
-        }
-
-        /* Hero Section */
-        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
-            position: relative;
+            justify-content: center;
+            color: white;
             overflow: hidden;
         }
 
-        .profile-section {
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            animation: fadeIn 1.5s ease-in-out;
+        .container {
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
         }
 
-        .profile-image-container {
-            flex-shrink: 0;
-            animation: slideInLeft 1s ease-out;
-        }
-
-        .profile-text {
-            animation: slideInRight 1s ease-out 0.3s both;
-        }
-
-        .profile-text h1 {
-            font-size: 3.5rem;
+        .logo {
+            font-size: 3rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
             background: linear-gradient(45deg, #FFD700, #FFA500);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .profile-text h2 {
-            font-size: 1.8rem;
-            color: #FFD700;
-            margin-bottom: 1.5rem;
-            font-weight: 500;
-        }
-
-        .profile-text p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 2rem;
-        }
-
-        /* Section Styles */
-        section {
-            padding: 5rem 2rem;
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        .section-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            color: #252C64;
+        .title {
+            font-size: 4rem;
+            font-weight: 700;
             margin-bottom: 1rem;
-            position: relative;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(45deg, #252C64, #FFD700);
-            border-radius: 2px;
-        }
-
-        .section-header p {
-            font-size: 1.1rem;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Card Styles */
-        .card {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .card h3 {
-            color: #252C64;
+        .subtitle {
             font-size: 1.5rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-weight: 300;
         }
 
-        .card h3 i {
-            color: #FFD700;
-        }
-
-        /* Skills Grid */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .skill-category {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .skill-category h3 {
-            color: #252C64;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .skill-category h3 i {
-            color: #FFD700;
-        }
-
-        .skill-list {
-            list-style: none;
-        }
-
-        .skill-list li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #f0f0f0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .skill-list li:last-child {
-            border-bottom: none;
-        }
-
-        .skill-list li i {
-            color: #FFD700;
-            font-size: 0.8rem;
-        }
-
-        /* Project Cards */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .project-header {
-            background: linear-gradient(45deg, #252C64, #2E398D);
-            color: white;
-            padding: 1.5rem;
-        }
-
-        .project-header h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-content p {
-            margin-bottom: 1rem;
-            color: #666;
-        }
-
-        .project-tech {
-            background: #f8f9fa;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-top: 1rem;
-        }
-
-        .project-tech strong {
-            color: #252C64;
-        }
-
-        /* Contact Section */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 3rem;
+        .description {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+            line-height: 1.6;
         }
 
         .contact-info {
-            background: white;
-            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
             padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .contact-item {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 1rem;
-            padding: 1rem 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .contact-item:last-child {
-            border-bottom: none;
+            margin: 1rem 0;
+            font-size: 1rem;
         }
 
         .contact-item i {
@@ -356,7 +89,7 @@
         }
 
         .contact-item a {
-            color: #252C64;
+            color: white;
             text-decoration: none;
             transition: color 0.3s ease;
         }
@@ -365,72 +98,73 @@
             color: #FFD700;
         }
 
-        /* Contact Form */
-        .contact-form {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        .progress-bar {
+            width: 300px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            margin: 2rem auto;
+            overflow: hidden;
+            position: relative;
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            border-radius: 3px;
+            animation: progress 2s ease-in-out infinite;
+            width: 60%;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #252C64;
-            font-weight: 500;
+        @keyframes progress {
+            0%, 100% { width: 60%; }
+            50% { width: 80%; }
         }
 
-        .form-group input,
-        .form-group textarea {
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 1rem;
-            border: 2px solid #f0f0f0;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #FFD700;
+        .shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
         }
 
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
+        .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
         }
 
-        .btn {
-            background: linear-gradient(45deg, #252C64, #2E398D);
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
+        .shape:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
         }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(37, 44, 100, 0.3);
+        .shape:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
         }
 
-        /* Footer */
-        footer {
-            background: linear-gradient(45deg, #252C64, #2E398D);
-            color: white;
-            text-align: center;
-            padding: 3rem 2rem;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
         }
 
         .social-icons {
@@ -450,6 +184,7 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .social-icons a:hover {
@@ -467,1231 +202,106 @@
             filter: none;
         }
 
-        /* Scroll to Top Button */
-        #scrollToTop {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(45deg, #252C64, #FFD700);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: none;
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-
-        #scrollToTop:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(37, 44, 100, 0.3);
-        }
-
-        /* Dark Mode Toggle */
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
-
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 34px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-
-        input:checked + .slider {
-            background-color: #FFD700;
-        }
-
-        input:checked + .slider:before {
-            transform: translateX(26px);
-        }
-
-        .slider .emoji {
-            font-size: 14px;
-            z-index: 1;
-        }
-
-        /* Responsive Design */
         @media (max-width: 768px) {
-            .menu {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1rem;
-            }
-
-            .profile-section {
-                flex-direction: column;
-                text-align: center;
-                gap: 2rem;
-            }
-
-            .profile-text h1 {
+            .title {
                 font-size: 2.5rem;
             }
-
-            .profile-text h2 {
-                font-size: 1.4rem;
+            
+            .subtitle {
+                font-size: 1.2rem;
             }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
+            
+            .description {
+                font-size: 1rem;
             }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
+            
+            .progress-bar {
+                width: 250px;
             }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-header h2 {
-                font-size: 2rem;
-            }
-        }
-
-        /* Background Sections */
-        .bg-light {
-            background: #f8f9fa;
-        }
-
-        .bg-white {
-            background: white;
-        }
-
-        /* Utility Classes */
-        .text-center {
-            text-align: center;
-        }
-
-        .mb-2 {
-            margin-bottom: 2rem;
-        }
-
-        .mt-2 {
-            margin-top: 2rem;
-        }
-
-        /* Experience Cards */
-        .experience-grid {
-            display: grid;
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .experience-card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            border-left: 4px solid #FFD700;
-        }
-
-        .experience-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .experience-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .experience-header h3 {
-            color: #252C64;
-            font-size: 1.5rem;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .experience-header h3 i {
-            color: #FFD700;
-        }
-
-        .experience-period {
-            background: linear-gradient(45deg, #252C64, #FFD700);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .experience-company {
-            color: #666;
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .experience-company i {
-            color: #252C64;
-        }
-
-        .experience-content h4 {
-            color: #252C64;
-            font-size: 1.2rem;
-            margin: 1.5rem 0 1rem 0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .experience-content h4 i {
-            color: #FFD700;
-        }
-
-        .experience-content ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .experience-content li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #f0f0f0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .experience-content li:last-child {
-            border-bottom: none;
-        }
-
-        .experience-content li::before {
-            content: "▸";
-            color: #FFD700;
-            font-weight: bold;
-        }
-
-        /* Skill Subcategories */
-        .skill-subcategory {
-            margin-bottom: 2rem;
-        }
-
-        .skill-subcategory h4 {
-            color: #252C64;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #f0f0f0;
-        }
-
-        .skill-subcategory h4 i {
-            color: #FFD700;
-        }
-
-        .skill-list li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #f0f0f0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .skill-list li:last-child {
-            border-bottom: none;
-        }
-
-        .skill-list li i {
-            color: #FFD700;
-            font-size: 0.8rem;
-        }
-
-        /* Project Enhancements */
-        .project-category {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            margin-top: 0.5rem;
-            display: inline-block;
-        }
-
-        .project-description, .project-tech, .project-results {
-            margin-bottom: 1.5rem;
-        }
-
-        .project-description h4, .project-tech h4, .project-results h4 {
-            color: #252C64;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .project-description h4 i, .project-tech h4 i, .project-results h4 i {
-            color: #FFD700;
-        }
-
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tech-tag {
-            background: linear-gradient(45deg, #252C64, #2E398D);
-            color: white;
-            padding: 0.4rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .project-results ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .project-results li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #f0f0f0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .project-results li:last-child {
-            border-bottom: none;
-        }
-
-        .project-results li::before {
-            content: "✓";
-            color: #FFD700;
-            font-weight: bold;
-        }
-
-        /* Education Cards */
-        .education-grid {
-            display: grid;
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .education-card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            border-left: 4px solid #FFD700;
-        }
-
-        .education-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .education-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .education-header h3 {
-            color: #252C64;
-            font-size: 1.5rem;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .education-header h3 i {
-            color: #FFD700;
-        }
-
-        .education-period {
-            background: linear-gradient(45deg, #252C64, #FFD700);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .education-institution {
-            color: #666;
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .education-institution i {
-            color: #252C64;
-        }
-
-        .education-content h4 {
-            color: #252C64;
-            font-size: 1.2rem;
-            margin: 1.5rem 0 1rem 0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .education-content h4 i {
-            color: #FFD700;
-        }
-
-        .education-modules ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .education-modules li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #f0f0f0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .education-modules li:last-child {
-            border-bottom: none;
-        }
-
-        .education-modules li i {
-            color: #FFD700;
-            font-size: 0.8rem;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .skill-tag {
-            background: linear-gradient(45deg, #FFD700, #FFA500);
-            color: white;
-            padding: 0.4rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .language-section, .language-proficiency {
-            margin-bottom: 2rem;
-        }
-
-        .language-item {
-            background: #f8f9fa;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-        }
-
-        .language-item strong {
-            color: #252C64;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .language-item .institution {
-            color: #666;
-            font-size: 0.9rem;
-            display: block;
-        }
-
-        .language-item .period {
-            color: #999;
-            font-size: 0.8rem;
-            display: block;
-            margin-top: 0.3rem;
-        }
-
-        .language-levels {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .language-level {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 8px;
-        }
-
-        .language-level .language {
-            font-weight: 600;
-            color: #252C64;
-        }
-
-        .language-level .level {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .experience-header, .education-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-
-            .experience-period, .education-period {
-                align-self: flex-start;
-            }
-
-            .tech-tags, .skill-tags {
-                justify-content: flex-start;
-            }
-
-            .language-level {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
+            
+            .contact-info {
+                padding: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav-bar" id="navbar">
-        <ul class="menu">
-            <li><a href="#home"><i class="fas fa-home"></i> HOME</a></li>
-            <li><a href="#berufserfahrungen"><i class="fas fa-briefcase"></i> BERUFSERFAHRUNGEN</a></li>
-            <li><a href="#kompetenzen"><i class="fas fa-tools"></i> KOMPETENZEN</a></li>
-            <li><a href="#projekte"><i class="fas fa-project-diagram"></i> PROJEKTE</a></li>
-            <li><a href="#bildungs"><i class="fas fa-graduation-cap"></i> BILDUNG</a></li>
-            <li><a href="#kontakt"><i class="fas fa-envelope"></i> KONTAKT</a></li>
-            <li>
-                <label class="switch">
-                    <input type="checkbox" id="darkModeToggle">
-                    <span class="slider round">
-                        <span class="emoji">🌙</span>
-                    </span>
-                </label>
-            </li>
-        </ul>
-    </nav>
-
-    <!-- Hero Section -->
-    <header class="hero" id="home">
-        <div class="profile-section">
-            <div class="profile-image-container">
-                <img src="assets/images/profil.jpg" alt="Ismail Kilicaslan" class="profile-image">
-            </div>
-            <div class="profile-text">
-                <h1>ISMAIL KILICASLAN</h1>
-                <h2>DEVOPS & CLOUD ENGINEER</h2>
-                <p>Erfahrener DevOps & Cloud Engineer mit fundierten Kenntnissen in AWS, Kubernetes, Docker, Terraform und CI/CD-Pipelines. Durch intensive Weiterbildung und praktische Projekte habe ich umfassende Erfahrung in der Automatisierung von Infrastrukturen, Container-Orchestrierung und Cloud-native Anwendungsentwicklung erworben.</p>
-                <a href="#kontakt" class="btn">
-                    <i class="fas fa-paper-plane"></i>
-                    Kontakt aufnehmen
-                </a>
-            </div>
-        </div>
-    </header>
+    <!-- Floating Background Shapes -->
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
 
     <!-- Main Content -->
-    <main>
-        <!-- Berufserfahrungen Section -->
-        <section id="berufserfahrungen" class="bg-light">
-            <div class="section-container">
-                <div class="section-header">
-                    <h2>Berufserfahrungen</h2>
-                    <p>Meine praktischen Erfahrungen in der DevOps und Cloud Engineering Branche</p>
-                </div>
-                
-                <div class="experience-grid">
-                    <div class="experience-card">
-                        <div class="experience-header">
-                            <h3><i class="fas fa-cloud"></i> DevOps & Cloud Engineer</h3>
-                            <span class="experience-period">2024 - Heute</span>
-                        </div>
-                        <div class="experience-company">
-                            <i class="fas fa-building"></i> NioyaTech LLC - USA (Intern, Remote)
-                        </div>
-                        <div class="experience-content">
-                            <h4><i class="fas fa-tasks"></i> Hauptaufgaben:</h4>
-                            <ul>
-                                <li>Entwicklung und Automatisierung von CI/CD-Pipelines mit Jenkins und GitLab CI/CD</li>
-                                <li>Infrastructure as Code (IaC) Implementierung mit Terraform für AWS-Ressourcen</li>
-                                <li>Containerisierung von Anwendungen mit Docker und Kubernetes-Deployments</li>
-                                <li>Monitoring und Logging-Setup mit Prometheus, Grafana und CloudWatch</li>
-                                <li>Implementierung von Microservices-Architekturen und API-Management</li>
-                            </ul>
-                            
-                            <h4><i class="fas fa-chart-line"></i> Erreichte Ziele:</h4>
-                            <ul>
-                                <li>Reduzierung der Deployment-Zeit um 70% durch automatisierte Pipelines</li>
-                                <li>Implementierung von Infrastructure as Code für 100% der AWS-Ressourcen</li>
-                                <li>Etablierung eines vollständigen Monitoring- und Alerting-Systems</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Kompetenzen Section -->
-        <section id="kompetenzen" class="bg-white">
-            <div class="section-container">
-                <div class="section-header">
-                    <h2>Kompetenzen</h2>
-                    <p>Meine wichtigsten DevOps & Cloud Computing Fähigkeiten</p>
-                </div>
-                
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3><i class="fab fa-aws"></i> Cloud Services (AWS)</h3>
-                        <div class="skill-subcategory">
-                            <h4><i class="fas fa-server"></i> Compute Services</h4>
-                            <ul class="skill-list">
-                                <li><i class="fas fa-check"></i> EC2 (Elastic Compute Cloud)</li>
-                                <li><i class="fas fa-check"></i> Lambda (Serverless Computing)</li>
-                                <li><i class="fas fa-check"></i> ECS (Elastic Container Service)</li>
-                                <li><i class="fas fa-check"></i> EKS (Elastic Kubernetes Service)</li>
-                                <li><i class="fas fa-check"></i> Auto Scaling Groups</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="skill-subcategory">
-                            <h4><i class="fas fa-database"></i> Storage & Database</h4>
-                            <ul class="skill-list">
-                                <li><i class="fas fa-check"></i> S3 (Simple Storage Service)</li>
-                                <li><i class="fas fa-check"></i> EBS (Elastic Block Store)</li>
-                                <li><i class="fas fa-check"></i> RDS (Relational Database Service)</li>
-                                <li><i class="fas fa-check"></i> DynamoDB (NoSQL Database)</li>
-                                <li><i class="fas fa-check"></i> ElastiCache (In-Memory Caching)</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="skill-subcategory">
-                            <h4><i class="fas fa-network-wired"></i> Networking & Security</h4>
-                            <ul class="skill-list">
-                                <li><i class="fas fa-check"></i> VPC (Virtual Private Cloud)</li>
-                                <li><i class="fas fa-check"></i> Route53 (DNS Service)</li>
-                                <li><i class="fas fa-check"></i> CloudFront (CDN)</li>
-                                <li><i class="fas fa-check"></i> IAM (Identity & Access Management)</li>
-                                <li><i class="fas fa-check"></i> WAF (Web Application Firewall)</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="skill-category">
-                        <h3><i class="fas fa-cogs"></i> DevOps Tools & Technologies</h3>
-                        <div class="skill-subcategory">
-                            <h4><i class="fab fa-docker"></i> Containerization</h4>
-                            <ul class="skill-list">
-                                <li><i class="fas fa-check"></i> Docker & Docker Compose</li>
-                                <li><i class="fas fa-check"></i> Container Registry Management</li>
-                                <li><i class="fas fa-check"></i> Multi-stage Docker Builds</li>
-                                <li><i class="fas fa-check"></i> Docker Security Best Practices</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="skill-subcategory">
-                            <h4><i class="fas fa-ship"></i> Orchestration</h4>
-                            <ul class="skill-list">
-                                <li><i class="fas fa-check"></i> Kubernetes (K8s)</li>
-                                <li><i class="fas fa-check"></i> Helm Charts</li>
-                                <li><i class="fas fa-check"></i> Rancher Management</li>
-                                <li><i class="fas fa-check"></i> OpenShift</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="skill-subcategory">
-                            <h4><i class="fas fa-code"></i> Infrastructure as Code</h4>
-                            <ul class="skill-list">
-                                <li><i class="fas fa-check"></i> Terraform (HCL)</li>
-                                <li><i class="fas fa-check"></i> Ansible (YAML)</li>
-                                <li><i class="fas fa-check"></i> AWS CloudFormation</li>
-                                <li><i class="fas fa-check"></i> AWS CDK (TypeScript/Python)</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="skill-category">
-                        <h3><i class="fas fa-eye"></i> Monitoring & Observability</h3>
-                        <div class="skill-subcategory">
-                            <h4><i class="fas fa-chart-bar"></i> Monitoring Tools</h4>
-                            <ul class="skill-list">
-                                <li><i class="fas fa-check"></i> Prometheus & Grafana</li>
-                                <li><i class="fas fa-check"></i> AWS CloudWatch</li>
-                                <li><i class="fas fa-check"></i> Datadog</li>
-                                <li><i class="fas fa-check"></i> New Relic</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="skill-subcategory">
-                            <h4><i class="fas fa-file-alt"></i> Logging & Tracing</h4>
-                            <ul class="skill-list">
-                                <li><i class="fas fa-check"></i> ELK Stack (Elasticsearch, Logstash, Kibana)</li>
-                                <li><i class="fas fa-check"></i> CloudWatch Logs</li>
-                                <li><i class="fas fa-check"></i> Fluentd</li>
-                                <li><i class="fas fa-check"></i> AWS X-Ray</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="skill-subcategory">
-                            <h4><i class="fas fa-bell"></i> Alerting & Incident Management</h4>
-                            <ul class="skill-list">
-                                <li><i class="fas fa-check"></i> PagerDuty</li>
-                                <li><i class="fas fa-check"></i> OpsGenie</li>
-                                <li><i class="fas fa-check"></i> Slack Notifications</li>
-                                <li><i class="fas fa-check"></i> Email Alerting</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="skill-category">
-                        <h3><i class="fas fa-code"></i> Programming & Scripting</h3>
-                        <div class="skill-subcategory">
-                            <h4><i class="fab fa-python"></i> Programming Languages</h4>
-                            <ul class="skill-list">
-                                <li><i class="fas fa-check"></i> Python (Advanced)</li>
-                                <li><i class="fas fa-check"></i> Bash Scripting</li>
-                                <li><i class="fas fa-check"></i> PowerShell</li>
-                                <li><i class="fas fa-check"></i> Go (Basic)</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="skill-subcategory">
-                            <h4><i class="fab fa-js-square"></i> Web Technologies</h4>
-                            <ul class="skill-list">
-                                <li><i class="fas fa-check"></i> HTML5 & CSS3</li>
-                                <li><i class="fas fa-check"></i> JavaScript (ES6+)</li>
-                                <li><i class="fas fa-check"></i> React.js</li>
-                                <li><i class="fas fa-check"></i> Node.js</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="skill-subcategory">
-                            <h4><i class="fas fa-database"></i> Databases</h4>
-                            <ul class="skill-list">
-                                <li><i class="fas fa-check"></i> MySQL & PostgreSQL</li>
-                                <li><i class="fas fa-check"></i> MongoDB</li>
-                                <li><i class="fas fa-check"></i> Redis</li>
-                                <li><i class="fas fa-check"></i> Cassandra</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projekte Section -->
-        <section id="projekte" class="bg-light">
-            <div class="section-container">
-                <div class="section-header">
-                    <h2>Projekte</h2>
-                    <p>Meine praktischen Projekte und Implementierungen</p>
-                </div>
-                
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3><i class="fas fa-microchip"></i> Microservices-Architektur mit Kubernetes</h3>
-                            <span class="project-category">Full-Stack Development</span>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-description">
-                                <h4><i class="fas fa-info-circle"></i> Projektbeschreibung</h4>
-                                <p>Entwicklung einer automatisierten Anwendung auf Basis der Microservices-Architektur mit Java, Spring Boot und Spring Cloud, integriert mit MySQL.</p>
-                            </div>
-                            
-                            <div class="project-tech">
-                                <h4><i class="fas fa-tools"></i> Verwendete Technologien</h4>
-                                <div class="tech-tags">
-                                    <span class="tech-tag">Java</span>
-                                    <span class="tech-tag">Spring Boot</span>
-                                    <span class="tech-tag">Docker</span>
-                                    <span class="tech-tag">Kubernetes</span>
-                                    <span class="tech-tag">Rancher</span>
-                                    <span class="tech-tag">Jenkins</span>
-                                    <span class="tech-tag">Terraform</span>
-                                    <span class="tech-tag">AWS EC2</span>
-                                    <span class="tech-tag">Prometheus</span>
-                                    <span class="tech-tag">Grafana</span>
-                                </div>
-                            </div>
-                            
-                            <div class="project-results">
-                                <h4><i class="fas fa-trophy"></i> Erreichte Ergebnisse</h4>
-                                <ul>
-                                    <li>Vollständig containerisierte und orchestrierte Microservices-Anwendung</li>
-                                    <li>Automatisierte CI/CD-Pipelines mit Jenkins</li>
-                                    <li>Umfassendes Monitoring mit Prometheus und Grafana</li>
-                                    <li>Skalierbare und hochverfügbare Architektur</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3><i class="fas fa-cloud"></i> Cloud-Native Blog-Anwendung auf AWS</h3>
-                            <span class="project-category">Cloud Architecture</span>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-description">
-                                <h4><i class="fas fa-info-circle"></i> Projektbeschreibung</h4>
-                                <p>Entwicklung und Bereitstellung einer Blog-Webanwendung auf AWS Cloud Infrastructure, basierend auf dem Django Framework mit Load Balancing und Auto Scaling.</p>
-                            </div>
-                            
-                            <div class="project-tech">
-                                <h4><i class="fas fa-tools"></i> Verwendete Technologien</h4>
-                                <div class="tech-tags">
-                                    <span class="tech-tag">Django</span>
-                                    <span class="tech-tag">AWS EC2</span>
-                                    <span class="tech-tag">RDS</span>
-                                    <span class="tech-tag">S3</span>
-                                    <span class="tech-tag">Lambda</span>
-                                    <span class="tech-tag">DynamoDB</span>
-                                    <span class="tech-tag">CloudFront</span>
-                                    <span class="tech-tag">Route53</span>
-                                    <span class="tech-tag">ALB</span>
-                                    <span class="tech-tag">Auto Scaling</span>
-                                </div>
-                            </div>
-                            
-                            <div class="project-results">
-                                <h4><i class="fas fa-trophy"></i> Erreichte Ergebnisse</h4>
-                                <ul>
-                                    <li>Skalierbare, hochverfügbare Cloud-Anwendung</li>
-                                    <li>Automatische Lastverteilung mit Application Load Balancer</li>
-                                    <li>Serverlose Funktionen mit AWS Lambda</li>
-                                    <li>Content Delivery Network mit CloudFront</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3><i class="fas fa-code"></i> Infrastructure as Code mit Terraform</h3>
-                            <span class="project-category">DevOps & IaC</span>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-description">
-                                <h4><i class="fas fa-info-circle"></i> Projektbeschreibung</h4>
-                                <p>Automatisierte AWS-Infrastruktur für statische Webseiten mit S3, CloudFront, Route53 und ACM-Zertifikaten, vollständig mit Terraform verwaltet.</p>
-                            </div>
-                            
-                            <div class="project-tech">
-                                <h4><i class="fas fa-tools"></i> Verwendete Technologien</h4>
-                                <div class="tech-tags">
-                                    <span class="tech-tag">Terraform</span>
-                                    <span class="tech-tag">AWS S3</span>
-                                    <span class="tech-tag">CloudFront</span>
-                                    <span class="tech-tag">Route53</span>
-                                    <span class="tech-tag">ACM</span>
-                                    <span class="tech-tag">GitHub Actions</span>
-                                    <span class="tech-tag">CI/CD</span>
-                                </div>
-                            </div>
-                            
-                            <div class="project-results">
-                                <h4><i class="fas fa-trophy"></i> Erreichte Ergebnisse</h4>
-                                <ul>
-                                    <li>Vollständig automatisierte, skalierbare Cloud-Infrastruktur</li>
-                                    <li>Sichere HTTPS-Verbindungen mit ACM-Zertifikaten</li>
-                                    <li>Automatische Deployments mit GitHub Actions</li>
-                                    <li>Versionierte Infrastruktur mit Git</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3><i class="fas fa-address-book"></i> Kubernetes Phonebook Microservice</h3>
-                            <span class="project-category">Container Orchestration</span>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-description">
-                                <h4><i class="fas fa-info-circle"></i> Projektbeschreibung</h4>
-                                <p>Entwicklung einer Phonebook-Microservice-Webanwendung mit MySQL-Datenbank, um die Microservice-Architektur praktisch umzusetzen.</p>
-                            </div>
-                            
-                            <div class="project-tech">
-                                <h4><i class="fas fa-tools"></i> Verwendete Technologien</h4>
-                                <div class="tech-tags">
-                                    <span class="tech-tag">Docker</span>
-                                    <span class="tech-tag">Kubernetes</span>
-                                    <span class="tech-tag">MySQL</span>
-                                    <span class="tech-tag">Frontend</span>
-                                    <span class="tech-tag">Backend</span>
-                                    <span class="tech-tag">Microservices</span>
-                                </div>
-                            </div>
-                            
-                            <div class="project-results">
-                                <h4><i class="fas fa-trophy"></i> Erreichte Ergebnisse</h4>
-                                <ul>
-                                    <li>Containerisierte Microservices-Anwendung</li>
-                                    <li>Kubernetes-Deployments und Service Discovery</li>
-                                    <li>Skalierbare Architektur mit Load Balancing</li>
-                                    <li>Persistente Datenhaltung mit MySQL</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Bildungs Section -->
-        <section id="bildungs" class="bg-white">
-            <div class="section-container">
-                <div class="section-header">
-                    <h2>Bildungsweg</h2>
-                    <p>Meine Ausbildung und Weiterbildung</p>
-                </div>
-                
-                <div class="education-grid">
-                    <div class="education-card">
-                        <div class="education-header">
-                            <h3><i class="fas fa-certificate"></i> AWS SAA & DevOps Engineer Weiterbildung</h3>
-                            <span class="education-period">Oktober 2023 – Oktober 2024</span>
-                        </div>
-                        <div class="education-institution">
-                            <i class="fas fa-graduation-cap"></i> Clarusway IT Training School
-                        </div>
-                        <div class="education-content">
-                            <div class="education-details">
-                                <h4><i class="fas fa-clock"></i> Programmdauer</h4>
-                                <p>39-wöchige intensive Weiterbildung (1480 Stunden)</p>
-                            </div>
-                            
-                            <div class="education-modules">
-                                <h4><i class="fas fa-book"></i> Ausbildungsmodule</h4>
-                                <ul>
-                                    <li><i class="fas fa-check"></i> IT Fundamentals & Linux Administration</li>
-                                    <li><i class="fas fa-check"></i> AWS Solutions Architect Associate (SAA)</li>
-                                    <li><i class="fas fa-check"></i> DevOps Engineering & CI/CD</li>
-                                    <li><i class="fas fa-check"></i> Containerization & Orchestration</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="education-skills">
-                                <h4><i class="fas fa-tools"></i> Erlernte Technologien</h4>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">AWS Cloud Services</span>
-                                    <span class="skill-tag">Docker</span>
-                                    <span class="skill-tag">Kubernetes</span>
-                                    <span class="skill-tag">Terraform</span>
-                                    <span class="skill-tag">CI/CD</span>
-                                    <span class="skill-tag">Monitoring</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="education-card">
-                        <div class="education-header">
-                            <h3><i class="fas fa-university"></i> Studium der Mathematik - Abschluss</h3>
-                            <span class="education-period">09/2007 – 06/2011</span>
-                        </div>
-                        <div class="education-institution">
-                            <i class="fas fa-building"></i> İnönü Universität - Fachbereich Mathematik, Malatya, Türkei
-                        </div>
-                        <div class="education-content">
-                            <div class="education-details">
-                                <h4><i class="fas fa-award"></i> Abschluss</h4>
-                                <p>Bachelor of Science in Mathematik</p>
-                            </div>
-                            
-                            <div class="education-modules">
-                                <h4><i class="fas fa-brain"></i> Erlernte Fähigkeiten</h4>
-                                <ul>
-                                    <li><i class="fas fa-check"></i> Analytisches Denken</li>
-                                    <li><i class="fas fa-check"></i> Problemlösung</li>
-                                    <li><i class="fas fa-check"></i> Systemanalyse</li>
-                                    <li><i class="fas fa-check"></i> Logisches Denken</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="education-card">
-                        <div class="education-header">
-                            <h3><i class="fas fa-language"></i> Sprachkenntnisse & Weiterbildung</h3>
-                            <span class="education-period">2019 – Heute</span>
-                        </div>
-                        <div class="education-content">
-                            <div class="language-section">
-                                <h4><i class="fas fa-graduation-cap"></i> Deutschkurse</h4>
-                                <div class="language-item">
-                                    <strong>Deutsch A2-B1 Weiterbildung</strong>
-                                    <span class="institution">WIPA GmbH, Berlin</span>
-                                    <span class="period">06/2019 – heute</span>
-                                </div>
-                                <div class="language-item">
-                                    <strong>Deutsch A1 Grundkurs</strong>
-                                    <span class="institution">Volkshochschule Neukölln, Berlin</span>
-                                    <span class="period">02/2019 – 05/2019</span>
-                                </div>
-                            </div>
-                            
-                            <div class="language-proficiency">
-                                <h4><i class="fas fa-globe"></i> Sprachkenntnisse</h4>
-                                <div class="language-levels">
-                                    <div class="language-level">
-                                        <span class="language">Türkisch</span>
-                                        <span class="level">Muttersprache</span>
-                                    </div>
-                                    <div class="language-level">
-                                        <span class="language">Englisch</span>
-                                        <span class="level">C1 (Verhandlungssicher)</span>
-                                    </div>
-                                    <div class="language-level">
-                                        <span class="language">Deutsch</span>
-                                        <span class="level">A2-B1 (Fortgeschritten)</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Kontakt Section -->
-        <section id="kontakt" class="bg-light">
-            <div class="section-container">
-                <div class="section-header">
-                    <h2>Kontakt</h2>
-                    <p>Ich freue mich über Ihre Nachricht!</p>
-                </div>
-                
-                <div class="contact-grid">
-                    <div class="contact-info">
-                        <h3 class="mb-2"><i class="fas fa-address-card"></i> Kontaktdaten</h3>
-                        
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <span>+49 178 611 0324</span>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <i class="far fa-envelope"></i>
-                            <a href="mailto:ismailkilicaslan61@gmail.com">ismailkilicaslan61@gmail.com</a>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <i class="fab fa-linkedin"></i>
-                            <a href="https://linkedin.com/in/ismail-kilicaslan" target="_blank">linkedin.com/in/ismail-kilicaslan</a>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <i class="fab fa-github"></i>
-                            <a href="https://github.com/iskilicaslan61" target="_blank">github.com/ismail-kilicaslan</a>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Berlin, Deutschland</span>
-                        </div>
-                    </div>
-
-                    <div class="contact-form">
-                        <h3 class="mb-2"><i class="fas fa-paper-plane"></i> Nachricht senden</h3>
-                        
-                        <form id="contactForm">
-                            <div class="form-group">
-                                <label for="name">Name *</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="email">E-Mail *</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="subject">Betreff</label>
-                                <input type="text" id="subject" name="subject">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="message">Nachricht *</label>
-                                <textarea id="message" name="message" required></textarea>
-                            </div>
-                            
-                            <button type="submit" class="btn">
-                                <i class="fas fa-paper-plane"></i>
-                                Nachricht senden
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Ismail Kilicaslan. Alle Rechte vorbehalten.</p>
-        <div class="social-icons">
-            <a href="https://linkedin.com/in/ismail-kilicaslan" target="_blank" title="LinkedIn">
-                <img src="assets/icons/linkedin.png" alt="LinkedIn">
-            </a>
-            <a href="https://github.com/ismail-kilicaslan" target="_blank" title="GitHub">
-                <img src="assets/icons/github.png" alt="GitHub">
-            </a>
-            <a href="https://www.xing.com/profile/Ismail_Kilicaslan057417/web_profiles" target="_blank" title="Xing">
-                <img src="assets/icons/Xing.png" alt="Xing">
-            </a>
+    <div class="container">
+        <div class="logo">ISMAIL KILICASLAN</div>
+        <h1 class="title">Coming Soon</h1>
+        <p class="subtitle">DevOps & Cloud Engineer Portfolio</p>
+        <p class="description">
+            My professional portfolio is currently under construction. 
+            I'm working on creating an impressive showcase of my DevOps and Cloud Engineering expertise.
+        </p>
+        
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
         </div>
-    </footer>
+        
+        <!-- Contact Information -->
+        <div class="contact-info">
+            <h3 style="margin-bottom: 1.5rem; color: #FFD700;">Get In Touch</h3>
+            
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:ismailkilicaslan61@gmail.com">ismailkilicaslan61@gmail.com</a>
+            </div>
+            
+            <div class="contact-item">
+                <i class="fab fa-github"></i>
+                <a href="https://github.com/iskilicaslan61">Github</a>
+            </div>
+            
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Berlin, Germany</span>
+            </div>
+        </div>
+    </div>
 
-    <!-- Scroll to Top Button -->
-    <button id="scrollToTop" onclick="scrollToTop()" title="Nach oben scrollen">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- Scripts -->
-    <script src="js/scripts.js"></script>
     <script>
-        // Navigation scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Show/hide scroll to top button
-        window.addEventListener('scroll', function() {
-            const button = document.getElementById('scrollToTop');
-            if (window.scrollY > 300) {
-                button.style.display = 'block';
-            } else {
-                button.style.display = 'none';
-            }
-        });
-
-        // Smooth scroll to top
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
-        // Contact form handling
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add typing effect to title
+            const title = document.querySelector('.title');
+            const originalText = title.textContent;
+            title.textContent = '';
             
-            // Get form data
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const subject = formData.get('subject');
-            const message = formData.get('message');
-            
-            // Simple validation
-            if (!name || !email || !message) {
-                alert('Bitte füllen Sie alle Pflichtfelder aus.');
-                return;
-            }
-            
-            // Here you would typically send the data to a server
-            // For now, we'll just show a success message
-            alert('Vielen Dank für Ihre Nachricht! Ich werde mich bald bei Ihnen melden.');
-            this.reset();
-        });
-
-        // Dark mode toggle
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        const body = document.body;
-        
-        // Load saved preference
-        if (localStorage.getItem('darkMode') === 'true') {
-            body.classList.add('dark-mode');
-            darkModeToggle.checked = true;
-        }
-        
-        darkModeToggle.addEventListener('change', function() {
-            if (this.checked) {
-                body.classList.add('dark-mode');
-                localStorage.setItem('darkMode', 'true');
-            } else {
-                body.classList.remove('dark-mode');
-                localStorage.setItem('darkMode', 'false');
-            }
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+            let i = 0;
+            const typeWriter = () => {
+                if (i < originalText.length) {
+                    title.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
                 }
+            };
+            
+            // Start typing effect after a short delay
+            setTimeout(typeWriter, 500);
+            
+            // Add mouse move effect for floating shapes
+            document.addEventListener('mousemove', function(e) {
+                const shapes = document.querySelectorAll('.shape');
+                const mouseX = e.clientX / window.innerWidth;
+                const mouseY = e.clientY / window.innerHeight;
+                
+                shapes.forEach((shape, index) => {
+                    const speed = (index + 1) * 0.5;
+                    const x = (mouseX - 0.5) * speed * 20;
+                    const y = (mouseY - 0.5) * speed * 20;
+                    shape.style.transform = `translate(${x}px, ${y}px)`;
+                });
             });
-        }, observerOptions);
-
-        // Observe all sections
-        document.querySelectorAll('section').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(30px)';
-            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(section);
         });
     </script>
 </body>

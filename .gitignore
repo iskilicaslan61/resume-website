@@ -1,3 +1,8 @@
+# Hide everything except index.html
+*
+!index.html
+!.gitignore
+
 # Terraform
 .terraform/
 *.tfstate

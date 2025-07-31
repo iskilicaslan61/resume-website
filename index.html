@@ -1,308 +1,184 @@
 <!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ismail Kilicaslan - Coming Soon</title>
-    <meta name="description" content="Ismail Kilicaslan - DevOps & Cloud Engineer Portfolio - Coming Soon">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coming Soon | DevOps & Cloud Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            overflow: hidden;
-        }
+      body {
+        background: linear-gradient(135deg, #f0f4ff, #cfd9ff, #e0f7ff);
+        font-family: 'Orbitron', sans-serif;
+      }
 
-        .container {
-            text-align: center;
-            max-width: 800px;
-            padding: 2rem;
-            position: relative;
-            z-index: 2;
-        }
+      .clock {
+        width: 320px;
+        height: 320px;
+        border: 8px solid #ffffffaa;
+        border-radius: 50%;
+        position: relative;
+        background: #ffffff11;
+        box-shadow: 0 0 30px #00000022;
+        margin: 0 auto;
+      }
 
-        .logo {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #FFD700, #FFA500);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+      .hand {
+        position: absolute;
+        bottom: 50%;
+        left: 50%;
+        transform-origin: bottom center;
+        transform: translateX(-50%);
+        background: black;
+      }
 
-        .title {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
+      .hour {
+        width: 6px;
+        height: 70px;
+        background-color: #4a90e2;
+      }
 
-        .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            font-weight: 300;
-        }
+      .minute {
+        width: 4px;
+        height: 100px;
+        background-color: #50b6ff;
+      }
 
-        .description {
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
-            opacity: 0.8;
-            line-height: 1.6;
-        }
+      .second {
+        width: 2px;
+        height: 120px;
+        background-color: #ff6f61;
+      }
 
-        .contact-info {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-top: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
+      .center-dot {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background: black;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+      }
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            margin: 1rem 0;
-            font-size: 1rem;
-        }
+      .number {
+        position: absolute;
+        color: #333;
+        font-weight: bold;
+        font-size: 1rem;
+        transform: translate(-50%, -50%);
+      }
 
-        .contact-item i {
-            color: #FFD700;
-            font-size: 1.2rem;
-            width: 30px;
-        }
-
-        .contact-item a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-item a:hover {
-            color: #FFD700;
-        }
-
-        .progress-bar {
-            width: 300px;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 3px;
-            margin: 2rem auto;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(45deg, #FFD700, #FFA500);
-            border-radius: 3px;
-            animation: progress 2s ease-in-out infinite;
-            width: 60%;
-        }
-
-        @keyframes progress {
-            0%, 100% { width: 60%; }
-            50% { width: 80%; }
-        }
-
-        .floating-shapes {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .shape {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .shape:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .shape:nth-child(2) {
-            width: 120px;
-            height: 120px;
-            top: 60%;
-            right: 10%;
-            animation-delay: 2s;
-        }
-
-        .shape:nth-child(3) {
-            width: 60px;
-            height: 60px;
-            bottom: 20%;
-            left: 20%;
-            animation-delay: 4s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
-        }
-
-        .social-icons {
-            margin-top: 2rem;
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-        }
-
-        .social-icons a {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .social-icons a:hover {
-            background: #FFD700;
-            transform: translateY(-3px);
-        }
-
-        .social-icons img {
-            width: 25px;
-            height: 25px;
-            filter: brightness(0) invert(1);
-        }
-
-        .social-icons a:hover img {
-            filter: none;
-        }
-
-        @media (max-width: 768px) {
-            .title {
-                font-size: 2.5rem;
-            }
-            
-            .subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .description {
-                font-size: 1rem;
-            }
-            
-            .progress-bar {
-                width: 250px;
-            }
-            
-            .contact-info {
-                padding: 1.5rem;
-            }
-        }
+      .n1 { top: 18%; left: 71%; }
+      .n2 { top: 30%; left: 85%; }
+      .n3 { top: 50%; left: 92%; }
+      .n4 { top: 70%; left: 85%; }
+      .n5 { top: 82%; left: 71%; }
+      .n6 { top: 88%; left: 50%; }
+      .n7 { top: 82%; left: 29%; }
+      .n8 { top: 70%; left: 15%; }
+      .n9 { top: 50%; left: 8%; }
+      .n10 { top: 30%; left: 15%; }
+      .n11 { top: 18%; left: 29%; }
+      .n12 { top: 10%; left: 50%; }
     </style>
-</head>
-<body>
-    <!-- Floating Background Shapes -->
-    <div class="floating-shapes">
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-    </div>
+  </head>
+  <body class="flex flex-col min-h-screen justify-between text-center text-gray-800">
+    <main class="flex flex-col items-center justify-center flex-grow px-4 pt-10">
+      <div class="clock relative mb-10">
+        <div class="hand hour" id="hour"></div>
+        <div class="hand minute" id="minute"></div>
+        <div class="hand second" id="second"></div>
+        <div class="center-dot"></div>
 
-    <!-- Main Content -->
-    <div class="container">
-        <div class="logo">ISMAIL KILICASLAN</div>
-        <h1 class="title">Coming Soon</h1>
-        <p class="subtitle">DevOps & Cloud Engineer Portfolio</p>
-        <p class="description">
-            My professional portfolio is currently under construction. 
-            I'm working on creating an impressive showcase of my DevOps and Cloud Engineering expertise.
+        <!-- Clock Numbers -->
+        <div class="number n1">1</div>
+        <div class="number n2">2</div>
+        <div class="number n3">3</div>
+        <div class="number n4">4</div>
+        <div class="number n5">5</div>
+        <div class="number n6">6</div>
+        <div class="number n7">7</div>
+        <div class="number n8">8</div>
+        <div class="number n9">9</div>
+        <div class="number n10">10</div>
+        <div class="number n11">11</div>
+        <div class="number n12">12</div>
+      </div>
+
+      <div class="max-w-xl space-y-3">
+        <h1 class="text-3xl md:text-4xl font-bold text-blue-900">Coming Soon</h1>
+        <p class="text-lg text-gray-700">
+          I'm a DevOps & Cloud Engineer.
         </p>
-        
-        <!-- Progress Bar -->
-        <div class="progress-bar">
-            <div class="progress-fill"></div>
+        <p class="text-sm text-gray-600">
+          Stay tuned for projects demonstrating expertise in Linux administration, cloud architecture across multiple providers, and end-to-end DevOps automation.
+        </p>
+      </div>
+    </main>
+
+    <!-- Footer Contact Section -->
+    <footer class="bg-white/30 w-full text-center py-6 backdrop-blur-sm shadow-inner">
+      <h2 class="text-xl font-semibold text-blue-800 mb-3">Get In Touch</h2>
+      <div class="flex flex-col items-center gap-2 text-sm text-gray-700">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M20 4H4a2 2 0 00-2 2v12a2 
+              2 0 002 2h16a2 2 0 002-2V6a2 
+              2 0 00-2-2zm0 2v.01L12 13 4 
+              6.01V6h16zM4 18V8l8 5 8-5v10H4z"
+            />
+          </svg>
+          <span>ismailkilicaslan61@gmail.com</span>
         </div>
-        
-        <!-- Contact Information -->
-        <div class="contact-info">
-            <h3 style="margin-bottom: 1.5rem; color: #FFD700;">Get In Touch</h3>
-            
-            <div class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:ismailkilicaslan61@gmail.com">ismailkilicaslan61@gmail.com</a>
-            </div>
-            
-            <div class="contact-item">
-                <i class="fab fa-github"></i>
-                <a href="https://github.com/iskilicaslan61">Github</a>
-            </div>
-            
-            <div class="contact-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <span>Berlin, Germany</span>
-            </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-gray-800" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 0C5.37 0 0 5.373 0 12c0 5.302 
+              3.438 9.799 8.207 11.385.6.111.793-.261.793-.577 
+              0-.285-.011-1.04-.017-2.04-3.338.725-4.042-1.61-4.042-1.61C4.422 
+              17.07 3.633 16.7 3.633 16.7c-1.087-.744.083-.729.083-.729 
+              1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 
+              2.809 1.304 3.495.997.108-.775.418-1.305.762-1.605-2.665-.3-5.467-1.334-5.467-5.931 
+              0-1.31.468-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 
+              0 0 1.008-.322 3.301 1.23a11.52 11.52 0 013.003-.404c1.018.005 
+              2.044.138 3.003.404 2.291-1.552 3.297-1.23 
+              3.297-1.23.654 1.653.243 2.874.12 3.176.77.84 
+              1.235 1.911 1.235 3.221 0 4.609-2.807 5.628-5.479 
+              5.921.43.372.823 1.102.823 2.222 0 1.606-.015 
+              2.898-.015 3.293 0 .319.192.694.801.576C20.565 
+              21.796 24 17.3 24 12c0-6.627-5.373-12-12-12z"
+            />
+          </svg>
+          <a href="https://github.com/iskilicaslan61" target="_blank" class="underline hover:text-black">
+            github.com/iskilicaslan61
+          </a>
         </div>
-    </div>
+        <div class="text-gray-600 mt-1">Berlin, Germany</div>
+      </div>
+    </footer>
 
     <script>
-        // Add some interactive effects
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add typing effect to title
-            const title = document.querySelector('.title');
-            const originalText = title.textContent;
-            title.textContent = '';
-            
-            let i = 0;
-            const typeWriter = () => {
-                if (i < originalText.length) {
-                    title.textContent += originalText.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, 100);
-                }
-            };
-            
-            // Start typing effect after a short delay
-            setTimeout(typeWriter, 500);
-            
-            // Add mouse move effect for floating shapes
-            document.addEventListener('mousemove', function(e) {
-                const shapes = document.querySelectorAll('.shape');
-                const mouseX = e.clientX / window.innerWidth;
-                const mouseY = e.clientY / window.innerHeight;
-                
-                shapes.forEach((shape, index) => {
-                    const speed = (index + 1) * 0.5;
-                    const x = (mouseX - 0.5) * speed * 20;
-                    const y = (mouseY - 0.5) * speed * 20;
-                    shape.style.transform = `translate(${x}px, ${y}px)`;
-                });
-            });
-        });
+      function updateClock() {
+        const now = new Date();
+        const sec = now.getSeconds();
+        const min = now.getMinutes();
+        const hr = now.getHours();
+
+        const secDeg = sec * 6;
+        const minDeg = min * 6 + sec * 0.1;
+        const hrDeg = hr * 30 + min * 0.5;
+
+        document.getElementById("second").style.transform = `translateX(-50%) rotate(${secDeg}deg)`;
+        document.getElementById("minute").style.transform = `translateX(-50%) rotate(${minDeg}deg)`;
+        document.getElementById("hour").style.transform = `translateX(-50%) rotate(${hrDeg}deg)`;
+      }
+
+      setInterval(updateClock, 1000);
+      updateClock();
     </script>
-</body>
+  </body>
 </html>

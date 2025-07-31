@@ -6,11 +6,11 @@
     <title>Coming Soon | DevOps & Cloud Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
 
       body {
         background: linear-gradient(135deg, #f0f4ff, #cfd9ff, #e0f7ff);
-        font-family: 'Orbitron', sans-serif;
+        font-family: "Orbitron", sans-serif;
       }
 
       .clock {
@@ -71,22 +71,62 @@
         transform: translate(-50%, -50%);
       }
 
-      .n1 { top: 18%; left: 71%; }
-      .n2 { top: 30%; left: 85%; }
-      .n3 { top: 50%; left: 92%; }
-      .n4 { top: 70%; left: 85%; }
-      .n5 { top: 82%; left: 71%; }
-      .n6 { top: 88%; left: 50%; }
-      .n7 { top: 82%; left: 29%; }
-      .n8 { top: 70%; left: 15%; }
-      .n9 { top: 50%; left: 8%; }
-      .n10 { top: 30%; left: 15%; }
-      .n11 { top: 18%; left: 29%; }
-      .n12 { top: 10%; left: 50%; }
+      .n1 {
+        top: 18%;
+        left: 71%;
+      }
+      .n2 {
+        top: 30%;
+        left: 85%;
+      }
+      .n3 {
+        top: 50%;
+        left: 92%;
+      }
+      .n4 {
+        top: 70%;
+        left: 85%;
+      }
+      .n5 {
+        top: 82%;
+        left: 71%;
+      }
+      .n6 {
+        top: 88%;
+        left: 50%;
+      }
+      .n7 {
+        top: 82%;
+        left: 29%;
+      }
+      .n8 {
+        top: 70%;
+        left: 15%;
+      }
+      .n9 {
+        top: 50%;
+        left: 8%;
+      }
+      .n10 {
+        top: 30%;
+        left: 15%;
+      }
+      .n11 {
+        top: 18%;
+        left: 29%;
+      }
+      .n12 {
+        top: 10%;
+        left: 50%;
+      }
     </style>
   </head>
-  <body class="flex flex-col min-h-screen justify-between text-center text-gray-800">
-    <main class="flex flex-col items-center justify-center flex-grow px-4 pt-10">
+  <body
+    class="flex flex-col min-h-screen justify-between text-center text-gray-800"
+  >
+    <main
+      class="flex flex-col items-center justify-center flex-grow px-4 pt-10"
+    >
       <div class="clock relative mb-10">
         <div class="hand hour" id="hour"></div>
         <div class="hand minute" id="minute"></div>
@@ -109,22 +149,30 @@
       </div>
 
       <div class="max-w-xl space-y-3">
-        <h1 class="text-3xl md:text-4xl font-bold text-blue-900">Coming Soon</h1>
-        <p class="text-lg text-gray-700">
-          I'm a DevOps & Cloud Engineer.
-        </p>
+        <h1 class="text-3xl md:text-4xl font-bold text-blue-900">
+          Coming Soon ...
+        </h1>
+        <p class="text-lg text-gray-700">I'm a DevOps & Cloud Engineer.</p>
         <p class="text-sm text-gray-600">
-          Stay tuned for projects demonstrating expertise in Linux administration, cloud architecture across multiple providers, and end-to-end DevOps automation.
+          Stay tuned for projects demonstrating expertise in Linux
+          administration, cloud architecture across multiple providers, and
+          end-to-end DevOps automation.
         </p>
       </div>
     </main>
 
     <!-- Footer Contact Section -->
-    <footer class="bg-white/30 w-full text-center py-6 backdrop-blur-sm shadow-inner">
+    <footer
+      class="bg-white/30 w-full text-center py-6 backdrop-blur-sm shadow-inner"
+    >
       <h2 class="text-xl font-semibold text-blue-800 mb-3">Get In Touch</h2>
       <div class="flex flex-col items-center gap-2 text-sm text-gray-700">
         <div class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+          <svg
+            class="w-5 h-5 text-blue-600"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
             <path
               d="M20 4H4a2 2 0 00-2 2v12a2 
               2 0 002 2h16a2 2 0 002-2V6a2 
@@ -135,7 +183,11 @@
           <span>ismailkilicaslan61@gmail.com</span>
         </div>
         <div class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-gray-800" viewBox="0 0 24 24" fill="currentColor">
+          <svg
+            class="w-5 h-5 text-gray-800"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
             <path
               d="M12 0C5.37 0 0 5.373 0 12c0 5.302 
               3.438 9.799 8.207 11.385.6.111.793-.261.793-.577 
@@ -153,7 +205,11 @@
               21.796 24 17.3 24 12c0-6.627-5.373-12-12-12z"
             />
           </svg>
-          <a href="https://github.com/iskilicaslan61" target="_blank" class="underline hover:text-black">
+          <a
+            href="https://github.com/iskilicaslan61"
+            target="_blank"
+            class="underline hover:text-black"
+          >
             github.com/iskilicaslan61
           </a>
         </div>
@@ -172,9 +228,15 @@
         const minDeg = min * 6 + sec * 0.1;
         const hrDeg = hr * 30 + min * 0.5;
 
-        document.getElementById("second").style.transform = `translateX(-50%) rotate(${secDeg}deg)`;
-        document.getElementById("minute").style.transform = `translateX(-50%) rotate(${minDeg}deg)`;
-        document.getElementById("hour").style.transform = `translateX(-50%) rotate(${hrDeg}deg)`;
+        document.getElementById(
+          "second"
+        ).style.transform = `translateX(-50%) rotate(${secDeg}deg)`;
+        document.getElementById(
+          "minute"
+        ).style.transform = `translateX(-50%) rotate(${minDeg}deg)`;
+        document.getElementById(
+          "hour"
+        ).style.transform = `translateX(-50%) rotate(${hrDeg}deg)`;
       }
 
       setInterval(updateClock, 1000);

@@ -1,6 +1,5 @@
 # Hide everything except index.html and .gitignore
 *
-!.gitignore
 !index.html
 
 # Node modules

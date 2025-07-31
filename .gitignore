@@ -1,11 +1,9 @@
 # Hide everything except index.html and .gitignore
-*
-!index.html
+index-copy.html
+.gitignore
 
 # Node modules
-node_modules/
-package.json
-package-lock.json
+
 
 # Terraform
 .terraform/
@@ -16,11 +14,7 @@ package-lock.json
 terraform-static-website/
 
 # Assets and public files
-assets/
-public/
-css/
-js/
-src/
+
 
 # System files
 .DS_Store
@@ -34,17 +28,15 @@ Thumbs.db
 *.temp
 
 # Deployment directories
-deploy-dist/
+
 
 # Build files
-build.js
+
 deploy.bat
 deploy.sh
 
 # Documentation
-README.md
-QUICK_SETUP.md
-AWS_IAM_SETUP.md
+
 
 # Temporary JSON files
 delete-cname.json

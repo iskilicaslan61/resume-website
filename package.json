@@ -1,0 +1,25 @@
+{
+  "name": "resume-website",
+  "version": "1.0.0",
+  "description": "Ismail Kilicaslan's DevOps & Cloud Engineer Resume Website",
+  "main": "index.html",
+  "scripts": {
+    "build": "node build.js",
+    "watch": "nodemon --watch src --ext html,js,css --exec 'npm run build'",
+    "dev": "npm run build && python -m http.server 8000",
+    "deploy": "npm run build && echo 'Website built successfully! Deploy to your hosting service.'"
+  },
+  "keywords": [
+    "resume",
+    "devops",
+    "cloud",
+    "aws",
+    "kubernetes",
+    "docker"
+  ],
+  "author": "Ismail Kilicaslan",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+} 
